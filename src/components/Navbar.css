@@ -1,0 +1,41 @@
+
+.ul {
+    list-style-type: none;
+    overflow: hidden;
+      margin-top: 0%;     
+  background-color: #4B6587;
+  }
+  
+  .li {
+    float: right;
+  }
+  
+  .li a {
+    display: block;
+    color: #C8C6C6;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+  }
+  .liq{
+    float:left;
+    display: block;
+    color: #C8C6C6;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+
+  }
+  .liq a {
+    display: block;
+    color: #C8C6C6;
+    text-align: center;
+    text-decoration: none;
+  } 
+   .li a:hover:not(.active) {
+    background-color: #f0e5cf5d;
+  }
+  .liq a:hover:not(.active) {
+    background-color: #f0e5cf5d;
+  }
+  
