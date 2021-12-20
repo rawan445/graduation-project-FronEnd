@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import "./Aqar.css";
+import "./Rent.css";
 
 ///
 function Aqar({ token }) {
@@ -11,7 +11,7 @@ function Aqar({ token }) {
   const [valueInput, setvalueInput] = useState("");
 //
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/Aqars", {
+    const res = await axios.get("http://localhost:5000/Rents", {
       headers: { authorization: `Bearer ${token}` },
     });
     setAqar(res.data);
@@ -24,31 +24,23 @@ function Aqar({ token }) {
     setvalueInput(v);
   }
   function serch(e) {
-    let newArr = Aqar.filter((item) => item.City == valueInput);
+    let newArr = Aqar.filter((item) => item.city == valueInput);
     setAqar(newArr);
   }
+  //
+  const add = () => {
+    history.push("/AddRent");
+  };
   //Aqar details
   const Aqardetails = (id) => {
-    console.log("hhhhhhhhhhhh");
-    history.push("/Aqardetails/" + id);
+    history.push("/RentDetails/" + id);
   };
-//Aqar delet
-const deleteAqar = async (id, index)=>{
-   
-  const deletedAqar = await axios.delete(`http://localhost:5000/Aqar/`+id,{
-    headers:{authorization: "Bearer " + token},
-  });
-  console.log((deletedAqar.data));
-  if (deletedAqar.data === "deleted"){
-    const copiedArr= [...Aqar];
-  copiedArr.splice(index,1);
-  setAqar(copiedArr);
-  }
-}
 
   return (
     <div>
-      <h1>ابحث عن عقارات للبيع و للايجار في السعودية</h1>
+                            <button className="btn"  onClick={() => {  (add());}}> اضافه </button>
+
+      <h1>ابحث عن عقارات للايجار في السعودية</h1>
       <div>
         <button className="btn" onClick={serch}>
           ابحث
@@ -73,19 +65,19 @@ const deleteAqar = async (id, index)=>{
                   <tr>
                     <td>
                       <span className="title-background">
-                        عنوان العقار : {element.TitleAqar}
+                        {element.name}
                       </span>
-                  
+                      <p className="title-background">
+                        {element.description}{" "}
+                      </p>
 
                       <p className="title-background">
-                        {" "}
-                        المدينه:{element.City}{" "}
+                        المدينه:{element.city}{" "}
                       </p>
                       <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button>
-                      <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      <button className="btn" > حذف </button>
                       {element.n}
                     </td>
-
                     <td>
                       <div className="myDiv"></div>
                     </td>
@@ -94,7 +86,7 @@ const deleteAqar = async (id, index)=>{
                       <div className="xx">
                         <img
                           className="imgAqar"
-                          src={element.imgAqar}
+                          src={element.img}
                           alt="..."
                         />
                       </div>

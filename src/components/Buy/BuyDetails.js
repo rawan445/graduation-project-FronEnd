@@ -1,14 +1,14 @@
 import React,{useEffect , useState} from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "./Aqar.css"
+import "./Buy.css"
 
 export default function AqarDetails({token}) {
     const {id} = useParams()
   const [a, seta] = useState([])
 
   useEffect(async () => {
-    const res = await axios.get(`http://localhost:5000/Aqar/`+id, {
+    const res = await axios.get(`http://localhost:5000/Buy/`+id, {
       headers: { authorization: `Bearer ${token}`  },
     });
     console.log("id :",id);
@@ -19,14 +19,16 @@ export default function AqarDetails({token}) {
     return (
         <div>
           تفاصيلللللل
-          <h4>{a.TitleAqar}</h4>
-          <h4>{a.TypeAqar}</h4>
-          <img className="imgAqar" src={a.imgAqar}alt="..."/>
-                    <iframe src={a.LocationAqar} allowfullscreen="" loading="lazy"></iframe>
+          <h4>{a.name}</h4>
+          <h4>{a.price}</h4>
+          <img className="imgAqar1" src={a.img}alt="..."/>
+                    <iframe src={a.location} allowfullscreen="" loading="lazy"></iframe>
+                    <h4>{a.description}</h4>
 
-          <h4>{a.spaceAqar}</h4>
-          <h4>{a.City}</h4>
-          <h4>{a.NumberAqar}</h4>
+          <h4>{a.space}</h4>
+          <h4>{a.city}</h4>
+          <h4>{a.mobileNumber}</h4>
+
 
 
 

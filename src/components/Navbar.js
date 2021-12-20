@@ -13,11 +13,11 @@ export default function Navbar({ token, setToken }) {
         <ul className="ul">
           
           <li className="li">
-            <Link to="/Aqar">عقارات </Link>
+            <Link to="/Buy">بيع </Link>
           </li>
       
           <li className="li">
-            <Link to="/AddAqar">إضافة عقار </Link>
+            <Link to="/rent">للايجار </Link>
           </li >
           <li className="li">
             <Link to="/Comp"> الشركات العقارية </Link>
