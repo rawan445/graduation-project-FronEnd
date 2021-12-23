@@ -9,23 +9,31 @@ function Aqar({ token }) {
   const history = useHistory();
   const [Aqar, setAqar] = useState([]);
   const [valueInput, setvalueInput] = useState("");
+  const [serch, setSerch] = useState([]);
+
 //
   useEffect(async () => {
     const res = await axios.get("http://localhost:5000/Buys", {
-      headers: { authorization: `Bearer ${token}` },
+      headers: {authorization: `Bearer ${token}` },
     });
     setAqar(res.data);
+    setvalueInput("")
   }, []);
 
   //serch
 
   function setvalue(e) {
     let v = e.target.value;
+    if(v == ""){
+      setSerch([])
+    }
     setvalueInput(v);
+    setSerch(Aqar)
   }
-  function serch(e) {
-    let newArr = Aqar.filter((item) => item.City == valueInput);
-    setAqar(newArr);
+  function serchA(e) {
+    let newArr = serch.filter((item) => item.city == valueInput);
+    setSerch(newArr);
+    setvalueInput("")
   }
   //
   const add = () => {
@@ -47,7 +55,7 @@ const deleteAqar = async (id, index)=>{
   if (deletedAqar.data === "deleted"){
     const copiedArr= [...Aqar];
   copiedArr.splice(index,1);
-  setAqar(copiedArr);
+  setSerch(copiedArr);
   }
 }
 
@@ -57,12 +65,13 @@ const deleteAqar = async (id, index)=>{
 
       <h1>ابحث عن عقارات للبيع في السعودية</h1>
       <div>
-        <button className="btn" onClick={serch}>
+        <button className="btn" onClick={serchA}>
           ابحث
         </button>
         <input
           className="input"
           id="input"
+          value={valueInput}
           onChange={setvalue}
           type="text"
           placeholder="المدينة"
@@ -71,7 +80,55 @@ const deleteAqar = async (id, index)=>{
 
         
       </div>
-      {Aqar.map((element, i) => {
+    {/* //////////////////////////////////////////////////////// */}
+      { serch.length? serch.map((element, i) => {
+        return (
+          <div>
+            <div className="wrapper" key={element._id}>
+              <div className="card">
+                <table>
+                  <tr>
+                    <td>
+                      <span className="title-background">
+                        عنوان العقار : {element.name}
+                      </span>
+                      <p className="title-background">
+                        وصف :{element.description}{" "}
+                      </p>
+
+                      <p className="title-background">
+                        المدينه:{element.city}{" "}
+                      </p>
+                      <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button>
+                      <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      {element.n}
+                    </td>
+
+                    <td>
+                      <div className="myDiv"></div>
+                    </td>
+                    <td style={{ width: "30%" }}>
+                      
+                      <div className="xx">
+                        <img
+                          className="imgAqar"
+                          src={element.img}
+                          alt="..."
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        );
+      }) 
+      
+      : 
+   // {/* //////////////////////////////////////////////////////// */}
+
+      Aqar.map((element, i) => {
         return (
           <div>
             <div className="wrapper" key={element._id}>

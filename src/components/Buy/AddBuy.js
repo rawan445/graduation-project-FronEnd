@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./add.css"
+//
+
 export default function AddAqar(props) {
+  
   console.log(props, "rawaaaaaaaan")
-  const {token ,setCats} = props
+  const {token ,settoken} = props
   const [name, setname] = useState("")
   const [price, setprice] = useState("")
   const [img, setimg] = useState("")

@@ -14,6 +14,8 @@ import AddRent from "./components/rent/AddRent";
 import BuyDetails from "./components/Buy/BuyDetails";
 import RentDetails from "./components/rent/RentDetails";
 
+import UpdateBuy from "./components/Buy/UpdateBuy";
+
 import Comp from "./components/Comp"; 
 export default function App() {
   
@@ -41,6 +43,9 @@ export default function App() {
 
      <Route  exact   path="/BuyDetails/:id" render={() => { return <BuyDetails token={token} />;}} />
      <Route  exact   path="/RentDetails/:id" render={() => { return <BuyDetails token={token} />;}} />
+
+     
+     <Route  exact   path="/UpdateBuy/:id" render={() => { return <UpdateBuy token={token} />;}} />
 
      <Route  exact   path="/Comp" render={() => { return <Comp token={token} />;}} />
      <Route exact path= "/login" render={() => ( <Login setToken = {setToken}  />  )
