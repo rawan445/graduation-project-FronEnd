@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./add.css"
 export default function AddAqar(props) {
+  const history = useHistory();
+
   console.log(props, "rawaaaaaaaan")
-  const {token ,setCats} = props
+  const {token ,settoken} = props
   const [name, setname] = useState("")
   const [price, setprice] = useState("")
   const [img, setimg] = useState("")
@@ -14,7 +17,7 @@ export default function AddAqar(props) {
   const [description, setdescription] = useState("")
 
   
-      const addAqars=async ()=>{
+      const addRent=async ()=>{
         const result = await axios.post(
           "http://localhost:5000/Rent",
           { name, price, img, location, space,city, mobileNumber,description },
@@ -22,6 +25,8 @@ export default function AddAqar(props) {
             headers: { authorization: `Bearer ${token}` },
           }
         );
+                  history.push("/Rent");
+
             }
     return (<>
         <div className="add">  
@@ -34,7 +39,7 @@ export default function AddAqar(props) {
       <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
       <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
 
-      <button onClick={() => { addAqars()}} > Submit </button>
+      <button onClick={() => { addRent()}} > Submit </button>
       </div>
         </>
     )

@@ -36,21 +36,19 @@ export default function SignUp() {
   return (
     <div className="divS"> 
 
-
-
-      <div class="container">
-        <form id="form" class="form">
+      <div className="container">
+        <form id="form" className="form">
             <h2>تسجيل </h2>
-            <div class="form-control">
-                <label for="username">اسم المستخدم </label>
+            <div className="form-control">
+                <label htmlFor="username">اسم المستخدم </label>
                 <input  onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
             </div>
-            <div class="form-control">
-                <label for="eamil">بريد إلكتروني</label>
+            <div className="form-control">
+                <label htmlFor="eamil">بريد إلكتروني</label>
                 <input onChange={(e) => { changeEmail(e); }}  type="email" id="email" placeholder="Enter eamil" />
             </div>
-            <div class="form-control">
-                <label for="passowrd">كلمة المرور</label>
+            <div className="form-control">
+                <label htmlFor="passowrd">كلمة المرور</label>
                 <input onChange={(e) => {    changePassword(e);  }} type="password" id="password" placeholder="Enter passowrd" />
             </div>
           

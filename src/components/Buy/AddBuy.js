@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import "./add.css"
 //
 
 export default function AddAqar(props) {
-  
-  console.log(props, "rawaaaaaaaan")
+  const history = useHistory();
+  // console.log(props, "rawaaaaaaaan")
   const {token ,settoken} = props
   const [name, setname] = useState("")
   const [price, setprice] = useState("")
@@ -23,8 +24,9 @@ export default function AddAqar(props) {
           { name, price, img, location, space,city, mobileNumber,description },
           {
             headers: { authorization: `Bearer ${token}` },
-          }
-        );
+          });
+          history.push("/Buy/");
+
             }
     return (<>
         <div className="add">  

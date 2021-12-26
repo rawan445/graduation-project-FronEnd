@@ -11,18 +11,23 @@ export default function Navbar({ token, setToken }) {
       
       {token ? (
         <ul className="ul">
-          
+            <li className="li">
+            <Link to="/Comp"> شركات عقارية </Link>
+          </li>
           <li className="li">
-            <Link to="/Buy">بيع </Link>
+            <Link to="/CompDecor"> شركات ديكور </Link>
+          </li>
+          <li className="li">
+            <Link to="/Buy">اعلان بيع عقاري </Link>
           </li>
       
           <li className="li">
-            <Link to="/rent">للايجار </Link>
+            <Link to="/rent">اعلان إيجار عقاري </Link>
           </li >
+  
           <li className="li">
-            <Link to="/Comp"> الشركات العقارية </Link>
+            <Link to="/Admin">لوحة التحكم</Link>
           </li>
-
           <li className="liq">
             <Link  to="/login"  onClick={() => { setToken(""); localStorage.setItem("token", JSON.stringify(""));  }}  >  تسجيل خروج </Link>
           </li>
