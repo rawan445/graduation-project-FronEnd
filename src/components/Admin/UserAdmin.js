@@ -11,7 +11,7 @@ export default function User({token}) {
         });
         setUser(res.data);
       }, [token]);
-      console.log("token",token);
+      // console.log("token",token);
     return (
         <div>
      <hr/>

@@ -17,7 +17,7 @@ export default function AqarDetails({token}) {
     seta(res.data);
     console.log("Data : ",res.data);
     
-  }, []);
+  }, [token]);
     return (
         <div>
           تفاصيل

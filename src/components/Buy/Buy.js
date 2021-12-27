@@ -135,7 +135,6 @@ const deleteAqar = async (id, index)=>{
       
       : 
    // {/* //////////////////////////////////////////////////////// */}
-
       Aqar.map((element, i) => {
         return (
           <div>
