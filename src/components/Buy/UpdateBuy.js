@@ -40,7 +40,8 @@ export default function UpdateBuy({token }) {
     console.log("id :",id);
     seta(upd.data);
     console.log(upd.data,"dadt");
-    
+    history.push("/Buy");
+
   }
   console.log("id :",id);
   const updateA = (id) => {

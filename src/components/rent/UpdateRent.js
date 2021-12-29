@@ -42,10 +42,8 @@ export default function UpdateRent({token }) {
     console.log(upd.data,"dadt");
     
   }
-  const updateA = (id) => {
+  const updateA = () => {
     history.push("/Rent/");
-    console.log("id RentDetails : ",id);
-
     
   };
     return (

@@ -10,7 +10,10 @@ const [Rent, setRent] = useState([])
         });
         setRent(res.data);
       }, []);
-    
+      const deleteRent = async (id, index)=>{
+        console.log("id : ",id);
+
+    }
     return (
         <div>
                 <hr/>
@@ -30,8 +33,8 @@ const [Rent, setRent] = useState([])
     <th>اسم اعلان الايجار</th>
   </tr>
   <tr className="tr">
-    <td onClick={() => {history.push("/UpdateRent/" + element._id); }}>✏️</td>
-    <td>🗑︎</td>
+    <td >✏️</td>
+    <td onClick={() => {  deleteRent(element._id); }}>🗑︎</td>
     <td>{element.name}</td>
   </tr>
   

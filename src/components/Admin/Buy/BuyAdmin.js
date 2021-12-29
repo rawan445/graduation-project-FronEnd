@@ -17,13 +17,24 @@ export default function BuyAdmin(props) {
 
       const deleteBuy = async (id, index)=>{
         console.log("id : ",id  ,"token : ",token);
+     
+       const deletedAqar = await axios.delete('http://localhost:5000/BuyAdmin/'+id,{
+         headers:{authorization: "Bearer " + token},
+       });
+       console.log("delete : ",deletedAqar.data);
+       if (deletedAqar.data === "deleted"){
+         const copiedArr= [...BuyA];
+       copiedArr.splice(index,1);
+       settoken(copiedArr);
+       }
 
-    }
+     }
+    
     return (
         <div>
                     <hr/>
 <button onClick={() => {history.push("/Admin"); }}>الرجوع للوحة التحكم</button>   
-<button onClick={() => {history.push("/AddBuy"); }}>اضافه اعلان بيع</button>  
+<button onClick={() => {history.push("/AddBuyAdmin"); }}>اضافه اعلان بيع</button>  
 <hr/>
 
 {BuyA.map((element, i) => {
@@ -36,7 +47,7 @@ export default function BuyAdmin(props) {
     <th>اسم اعلان البيع</th>
   </tr>
   <tr className="tr">
-    <td onClick={() => {history.push("/UpdateBuy/" + element._id); }}>✏️</td>
+    <td>✏️</td>
     <td onClick={() => {  deleteBuy(element._id); }}>🗑︎</td>
     <td>{element.name}</td>
   </tr>

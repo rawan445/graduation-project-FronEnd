@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import "./add.css"
+import { GiReturnArrow } from 'react-icons/gi';
+
 //
 
-export default function AddAqar(props) {
+export default function AddBuyAdmin(props) {
   const history = useHistory();
   // console.log(props, "rawaaaaaaaan")
   const {token ,settoken} = props
@@ -16,19 +17,21 @@ export default function AddAqar(props) {
   const [city, setcity] = useState("")
   const [mobileNumber, setmobileNumber] = useState("")
   const [description, setdescription] = useState("")
-
   
-      const addAqars=async ()=>{
+      const addAqars = async ()=>{
         const result = await axios.post(
           "http://localhost:5000/Buy",
           { name, price, img, location, space,city, mobileNumber,description },
           {
             headers: { authorization: `Bearer ${token}` },
           });
-          history.push("/Buy");
+          history.push("/BuyAdmin");
 
             }
     return (<>
+    Add Buy Admin 
+    <button onClick={() => {history.push("/BuyAdmin"); }} className="tt"><GiReturnArrow/></button>  
+
         <div className="add">  
       <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
       <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
