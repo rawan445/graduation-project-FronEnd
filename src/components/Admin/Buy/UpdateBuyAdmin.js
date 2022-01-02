@@ -1,8 +1,9 @@
+
 import React,{useEffect , useState} from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-export default function UpdateBuy({token }) {
+export default function UpdateBuyAdmin({token }) {
     const history = useHistory();
 
     const {id} = useParams()
@@ -19,7 +20,6 @@ export default function UpdateBuy({token }) {
       const res = await axios.get(`http://localhost:5000/Buy/`+id, {
       headers: { authorization: `Bearer ${token}`  },
       });
-      //
       setname(res.data.name)
       setprice(res.data.price)
       setimg(res.data.img)
@@ -41,13 +41,13 @@ export default function UpdateBuy({token }) {
     console.log("id :",id);
     seta(upd.data);
     console.log(upd.data,"dadt");
-    history.push("/Buy");
+    history.push("/BuyAdmin");
 
   }
   console.log("id :",id);
-  const updateA = (id) => {
-    history.push("/Buy/");
-    console.log("id BuyDetails : ",id);
+  const BuyAdmin = (id) => {
+    history.push("/BuyAdmin/");
+    // console.log("id BuyDetails : ",id);
 
     
   };
@@ -55,9 +55,9 @@ export default function UpdateBuy({token }) {
     return (
         <div>
              <div>
-          <button className="btn"  onClick={() => {  updateA(a._id); }}> رجوع </button>
+          <button className="btn"  onClick={() => {  BuyAdmin(a._id); }}> رجوع </button>
           </div>
-نعديل اعلان البيع
+نعديل اعلان البيع Update Buy Admin
       <div className="add">  
       <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
       <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" value={price}/>

@@ -18,7 +18,7 @@ export default function User({token}) {
       }, [token]);
       // console.log("token",token);
 
-
+      console.log("uuuu",User)
       const deleteUser = async (id, index)=>{
         console.log("id : ",id  ,"token : ",token);
      
@@ -38,7 +38,7 @@ export default function User({token}) {
 
 <button onClick={() => {history.push("/Admin"); }} className="tt"><GiReturnArrow/></button>  
 <button onClick={() => {history.push("/AddUserAdmin"); }} className="tt"><FaUserPlus/></button>  
-
+{ }
 <hr/>
     
 {User.map((element, i) => {

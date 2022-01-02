@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 ///
-function Aqar({ token }) {
+function Aqar({ token ,role ,id}) {
 
   const history = useHistory();
   const [Aqar, setAqar] = useState([]);
@@ -57,7 +57,10 @@ const deleteAqar = async (id, index)=>{
 
   return (
     <div>
+                 {token? 
+
                             <button className="btn"  onClick={() => {history.push("/AddRent"); }}> اضافه اعلان جديد </button>
+                            :""     }
 
       <h1>ابحث عن عقارات للايجار في السعودية</h1>
       <div>
@@ -96,7 +99,9 @@ const deleteAqar = async (id, index)=>{
                         المدينه:{element.city}{" "}
                       </p>
                       {/* <button className="btn"  > تفاصيل أكثر </button> */}
+                      {role == 3 && element.user ==id? 
                       <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      :""     }
                       {element.n}
                     </td>
 
@@ -144,8 +149,9 @@ const deleteAqar = async (id, index)=>{
                       </p>
                       {/* <p>{element.user.name}</p> */}
                       {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
-                      <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
-                      {element.n}
+                       {role == 3 && element.user ==id? 
+                        <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                        :""     }                    
                     </td>
 
                     <td>

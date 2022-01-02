@@ -4,13 +4,12 @@ import axios from "axios";
 import "./Buy.css";
 
 ///
-function Aqar({ token }) {
+function Aqar({ token ,role,id}) {
 
   const history = useHistory();
   const [Aqar, setAqar] = useState([]);
   const [valueInput, setvalueInput] = useState("");
   const [serch, setSerch] = useState([]);
-
 //
   useEffect(async () => {
     const res = await axios.get("http://localhost:5000/Buys", {
@@ -18,7 +17,9 @@ function Aqar({ token }) {
     });
     setAqar(res.data);
     
-  }, []);
+    console.log(res.data);
+
+  }, [token]);
 
   //serch
 
@@ -57,20 +58,15 @@ const deleteAqar = async (id, index)=>{
   copiedArr.splice(index,1);
   setSerch(copiedArr);
   }
-  // const deletedAqar = a\wait axios.delete(`http://localhost:5000/Buy/`+id,{
-  //   headers:{authorization: "Bearer " + token},
-  // });
-  // console.log((deletedAqar.data));
-  // if (deletedAqar.data === "deleted"){
-  //   const copiedArr= [...Aqar];
-  // copiedArr.splice(index,1);
-  // setSerch(copiedArr);
-  // }
+
 }
+// console.log('role',role);
 
   return (
     <div>
+           {token? 
                             <button className="btn"  onClick={() => {  (add());}}> اضافه اعلان جديد </button>
+                            :""     }
 
       <h1>ابحث عن عقارات للبيع في السعودية</h1>
       <div>
@@ -108,8 +104,9 @@ const deleteAqar = async (id, index)=>{
                         المدينه:{element.city}{" "}
                       </p>
                       {/* <button className="btn"  > تفاصيل أكثر </button> */}
+                      {role == 3 && element.user ==id? 
                       <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
-                      {element.n}
+                      :""     }
                     </td>
 
                     <td>
@@ -119,6 +116,8 @@ const deleteAqar = async (id, index)=>{
                       
                       <div className="xx">
                         <img
+                           onClick={() => {  (Aqardetails(element._id));}}
+
                           className="imgAqar"
                           src={element.img}
                           alt="..."
@@ -131,8 +130,7 @@ const deleteAqar = async (id, index)=>{
             </div>
           </div>
         );
-      }) 
-      
+      })     
       : 
    // {/* //////////////////////////////////////////////////////// */}
       Aqar.map((element, i) => {
@@ -155,7 +153,10 @@ const deleteAqar = async (id, index)=>{
                       </p>
                       {/* <p>{element.user.name}</p> */}
                       {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
+                      {/* <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button> */}
+                      {role == 3 && element.user ==id ? 
                       <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      :""     }
                       {element.n}
                     </td>
 

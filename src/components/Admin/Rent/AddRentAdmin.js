@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useHistory } from "react-router-dom";
-import "./add.css"
-
-//
-
-export default function AddAqar(props) {
+import axios from "axios";
+export default function AddRentAdmin(props) {
   const history = useHistory();
-  // console.log(props, "rawaaaaaaaan")
+
+  console.log(props, "rawaaaaaaaan")
   const {token ,settoken} = props
   const [name, setname] = useState("")
   const [price, setprice] = useState("")
@@ -17,38 +14,21 @@ export default function AddAqar(props) {
   const [city, setcity] = useState("")
   const [mobileNumber, setmobileNumber] = useState("")
   const [description, setdescription] = useState("")
-  const [file, setFile] = useState(null);
-  const [error, setError] = useState(null);
-  const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
 
   
-      const addAqars=async ()=>{
+      const addRent=async ()=>{
         const result = await axios.post(
-          "http://localhost:5000/Buy",
+          "http://localhost:5000/Rent",
           { name, price, img, location, space,city, mobileNumber,description },
           {
             headers: { authorization: `Bearer ${token}` },
-          });
-          history.push("/Buy");
+          }
+        );
+                  history.push("/RentAdmin");
 
             }
-
-            
-  const handleChange = (e) => {
-    let selected = e.target.files[0];
-
-
-    if (selected && types.includes(selected.type)) {
-      setFile(selected);
-      console.log(selected);
-      setError('');
-    } else {
-      setFile(null);
-      setError('Please select an image file (png or jpg)');
-    }
-  };
-
     return (<>
+    Add Rent Admin
         <div className="add">  
       <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
       <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
@@ -59,7 +39,7 @@ export default function AddAqar(props) {
       <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
       <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
 
-      <button onClick={() => { addAqars()}} > Submit </button>
+      <button onClick={() => { addRent()}} > Submit </button>
       </div>
         </>
     )

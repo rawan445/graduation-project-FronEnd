@@ -16,18 +16,18 @@ export default function BuyAdmin(props) {
       }, []);
 
       const deleteBuy = async (id, index)=>{
-        console.log("id : ",id  ,"token : ",token);
+      //   console.log("id : ",id  ,"token : ",token);
      
-       const deletedAqar = await axios.delete('http://localhost:5000/BuyAdmin/'+id,{
-         headers:{authorization: "Bearer " + token},
-       });
-       console.log("delete : ",deletedAqar.data);
-       if (deletedAqar.data === "deleted"){
-         const copiedArr= [...BuyA];
-       copiedArr.splice(index,1);
-       settoken(copiedArr);
-       }
-
+      const deletedBuy = await axios.delete('http://localhost:5000/BuyAdmin/'+id,{
+        headers:{authorization: "Bearer " + token},
+      });
+      console.log("delete : ",deletedBuy.data);
+      
+      if (deletedBuy.data === "deleted"){
+        const copiedArr= [...BuyA];
+      copiedArr.splice(index,1);
+      setBuyA(copiedArr);
+      }
      }
     
     return (
@@ -47,8 +47,9 @@ export default function BuyAdmin(props) {
     <th>اسم اعلان البيع</th>
   </tr>
   <tr className="tr">
-    <td>✏️</td>
-    <td onClick={() => {  deleteBuy(element._id); }}>🗑︎</td>
+  
+    <td onClick={() => {history.push("/UpdateBuyAdmin/" + element._id); }}>✏️</td>
+    <td onClick={() => {  deleteBuy(element._id ,i); }}>🗑︎</td>
     <td>{element.name}</td>
   </tr>
   

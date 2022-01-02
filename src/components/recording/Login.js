@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default function SignUp({setToken  ,setRole}) {
+export default function SignUp({setToken  ,setRole,setname ,setid}) {
   const history = useHistory();                                      
 
     const [email, setEmail] = useState("");
@@ -15,34 +15,51 @@ export default function SignUp({setToken  ,setRole}) {
           email: email,
           password: password,
         });
-      
+// console.log("ASSS",response.data.payload.userId);
+
+
         if(response.data.payload.role== 1){
-          setToken(response.data.token)
+          
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
 
           setRole(response.data.payload.role)
           console.log("role : ",response.data.payload.role);
           localStorage.setItem("role :",JSON.stringify(response.data.payload.role))
+          setname(response.data.payload.userName)
+          localStorage.setItem("name",JSON.stringify(response.data.payload.userName))
+
+          setid(response.data.payload.userId)
+          localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
+          setToken(response.data.token)
+
           history.push("/Admin");
           
         }else if(response.data.payload.role== 2){
-          setToken(response.data.token)
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
-
           setRole(response.data.payload.role)
           console.log("role : ",response.data.payload.role);
           localStorage.setItem("role :",JSON.stringify(response.data.payload.role))
-          history.push("/Comp");
+          setname(response.data.payload.userName)
+          localStorage.setItem("name",JSON.stringify(response.data.payload.userName))
+          setid(response.data.payload.userId)
+          localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
+          setToken(response.data.token)
+
+          history.push("/Company");
         }else {
-          setToken(response.data.token)
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
-
           setRole(response.data.payload.role)
           console.log("role : ",response.data.payload.role);
           localStorage.setItem("role :",JSON.stringify(response.data.payload.role))
+          setname(response.data.payload.userName)
+localStorage.setItem("name",JSON.stringify(response.data.payload.userName))
+setid(response.data.payload.userId)
+localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
+setToken(response.data.token)
+
           history.push("/Buy");
         }
       } catch (error) {

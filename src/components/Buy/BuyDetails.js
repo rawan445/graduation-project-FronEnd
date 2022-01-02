@@ -23,6 +23,7 @@ export default function AqarDetails({token}) {
           تفاصيل
 
           <div>
+            
           <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + id); }}> تحرير </button>
           <h4>{a.price}</h4>  
           <img className="imgAqar1" src={a.img}alt="..."/>
@@ -31,6 +32,8 @@ export default function AqarDetails({token}) {
           <h4>{a.space}</h4>
           <h4>{a.city}</h4>
           <h4>{a.mobileNumber}</h4>
+
+          
           </div>
 
         </div>

@@ -1,0 +1,38 @@
+ 
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .img{
+      width: 200px;
+      height: 175px;
+  }
+  .card1 {
+    color: #117d9c;
+    overflow: hidden;
+    margin: 10px;
+    border-radius: 20px;
+    padding: 10px;
+    background: url("https://almithaq.com.kw/assets/images/chalets/bg.png") left bottom/50% no-repeat #fff;
+    position: relative;
+  
+  }
+  .h4{
+
+    font-size: calc(1.275rem + .3vw);
+    margin: 36px;
+    color: #4B6587;
+}
+  

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
-export default function RentAdmin() {
+export default function RentAdmin({token}) {
     const history = useHistory();
 const [Rent, setRent] = useState([])
     useEffect(async () => {
@@ -10,10 +10,12 @@ const [Rent, setRent] = useState([])
         });
         setRent(res.data);
       }, []);
-      const deleteRent = async (id, index)=>{
-        console.log("id : ",id);
+ 
 
-    }
+    const deleteRent = async (id, index)=>{
+        console.log("id : ",id  ,"token : ",token ,"i :",index);
+    
+     }
     return (
         <div>
                 <hr/>
@@ -33,8 +35,9 @@ const [Rent, setRent] = useState([])
     <th>اسم اعلان الايجار</th>
   </tr>
   <tr className="tr">
-    <td >✏️</td>
-    <td onClick={() => {  deleteRent(element._id); }}>🗑︎</td>
+  
+    <td onClick={() => {history.push("/RentAdmin"); }}>✏️</td>
+    <td onClick={() => {  deleteRent(element._id ,i); }}>🗑︎</td>
     <td>{element.name}</td>
   </tr>
   
