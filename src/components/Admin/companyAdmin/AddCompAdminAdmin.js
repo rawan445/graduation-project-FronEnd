@@ -1,38 +1,41 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import ProgressBar from '../../ProgressBar';
 
-export default function AddRentAdmin(props) {
-  const history = useHistory();
+import { useHistory } from "react-router-dom";
+// import "../add.css"
 
-  console.log(props, "rawaaaaaaaan")
+//
+
+export default function AddAqar(props) {
+  const history = useHistory();
+  // console.log(props, "rawaaaaaaaan")
   const {token ,settoken} = props
   const [name, setname] = useState("")
-  const [price, setprice] = useState("")
-  const [img, setimg] = useState("")
-  const [location, setlocation] = useState("")
-  const [space, setspace] = useState("")
+  const [logo, setimg] = useState("")
   const [city, setcity] = useState("")
-  const [mobileNumber, setmobileNumber] = useState("")
   const [description, setdescription] = useState("")
+  const [location, setlocation] = useState("")
+  const [mobileNumber, setmobileNumber] = useState("")
+  const [nameAqar, setnameAqar] = useState("")
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
 
   const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
 
-  
-      const addRent=async ()=>{
+      const addAqars=async ()=>{
         const result = await axios.post(
-          "http://localhost:5000/Rent",
-          { name, price, img, location, space,city, mobileNumber,description },
+          "http://localhost:5000/company",
+          {name ,logo,city,description,location,mobileNumber, nameAqar },
           {
             headers: { authorization: `Bearer ${token}` },
-          }
-        );
-                  history.push("/RentAdmin");
+          });
+          history.push("/CompAdmin");
 
             }
+
+        
+                  
             const handleChange = (e) => {
               let selected = e.target.files[0];
               
@@ -49,20 +52,18 @@ export default function AddRentAdmin(props) {
               setimg(e.target.value)
             };
     return (<>
-    Add Rent Admin
         <div className="add">  
-      <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
-      <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
-      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="img"/> */}
-      <input type="file" onChange={handleChange} />
+        <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
+      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="logo" /> */}
+            <input type="file" onChange={handleChange} />
 
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/>
-      <input onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
-      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
-      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
+      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" />
+      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" />
+      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" />
+      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" />
+      <input onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar"/>
 
-
+      
       <form>
       <label>
         {/* <input type="file" onChange={handleChange} /> */}
@@ -73,7 +74,7 @@ export default function AddRentAdmin(props) {
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
       </div>
     </form>
-      <button onClick={() => { addRent()}} > Submit </button>
+      <button onClick={() => { addAqars()}} > Submit </button>
       </div>
         </>
     )

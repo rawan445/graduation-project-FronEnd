@@ -50,6 +50,7 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
           history.push("/Company");
         }else {
           // console.log("token : ",response.data.token);
+
           localStorage.setItem("token",JSON.stringify(response.data.token))
           setRole(response.data.payload.role)
           console.log("role : ",response.data.payload.role);

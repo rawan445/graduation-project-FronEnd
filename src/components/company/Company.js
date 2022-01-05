@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./com.css"
-export default function Company({ token ,role,id}) {
+export default function Company({ token ,role,idU}) {
     
   const history = useHistory();
   const [Company, setCompany] = useState([]);
@@ -20,7 +20,19 @@ export default function Company({ token ,role,id}) {
     console.log("hhhhhhhhhhhh");
     history.push("/CompanyDetails/" + id );
   };
-
+  const deleteAqar = async (id, index)=>{
+    console.log("id : ",id  ,"token : ",token);
+ 
+   const deletedAqar = await axios.delete('http://localhost:5000/company/'+id,{
+     headers:{authorization: "Bearer " + token},
+   });
+   console.log("delete : ",deletedAqar.data);
+   if (deletedAqar.data === "deleted"){
+     const copiedArr= [...Company];
+   copiedArr.splice(index,1);
+   setCompany(copiedArr);
+   }
+  }
     return (
         <div>
         <h1>منشأت والمكاتب العقارية في السعودية</h1>
@@ -34,17 +46,19 @@ export default function Company({ token ,role,id}) {
   <div className="column">
     <div className="card1">
     <img className="img" onClick={() => {  (Companydetails(element._id));}} src={element.logo}  alt="..."/>
-
       <h3>{element.name}</h3>
-      <p>{element.city}</p>
-    </div>
+      {console.log("element.user: ",element.user ,"idU :",idU  ,"role :",role)}
+      {role == 2 && element.user ==idU? <>
+        <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+        <button className="btn"  onClick={() => {history.push("/UpdateCompany/" + element._id); }}> تحرير </button>
+
+      </>
+                       :""     } 
+   </div>
   </div>
 
                </div>
-{/* 
-      {role == 2 && element.user ==id? 
-                      <button className="btn"  onClick={() => {  deleteCompany(element._id, i); }}> حذف </button>
-                      :""     }          */}
+
 </>
 )
 })}

@@ -7,8 +7,7 @@ export default function UpdateUserAdmin({token}) {
 
     const {id} = useParams()
     const [a, seta] = useState([])
-    const [name, setname] = useState("")
-    const [email, setemail] = useState("")
+    const [role, setrole] = useState("")
 
 
     useEffect(async () => {
@@ -16,8 +15,7 @@ export default function UpdateUserAdmin({token}) {
         headers: { authorization: `Bearer ${token}`  },
         });
         seta(res.data)
-      setname(res.data.name)
-      setemail(res.data.email)
+        setrole(res.data.role)
   
       console.log("Data : ",res.data);
       
@@ -27,7 +25,7 @@ export default function UpdateUserAdmin({token}) {
 
 
   const updateH = async ()=>{
-    const upd = await axios.put(`http://localhost:5000/user/`+id,{ name, email },
+    const upd = await axios.put(`http://localhost:5000/user/`+id,{ role },
     {
       headers:{authorization: "Bearer " + token},
     }); 
@@ -52,8 +50,7 @@ export default function UpdateUserAdmin({token}) {
 
 تعديل بيانات المستخدم 
  <div className="add">  
- <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
- <input onChange={(e) => { (setemail(e.target.value)); }} placeholder="email"value={email} />
+ <input onChange={(e) => {  (setrole(e.target.value)) ; }} placeholder="role" value={role}/>
 
  
  <button className="btn"  onClick={() => {  updateH(a._id); }}> تحرير </button>

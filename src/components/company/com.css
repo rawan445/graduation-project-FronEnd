@@ -35,4 +35,18 @@
     margin: 36px;
     color: #4B6587;
 }
+
+@media only screen and (max-width: 900px) {
   
+  .img{
+    width: 200px;
+    height: 175px;
+    margin: 24px;
+
+}
+.column {
+  width: 371px;
+  padding: 0 10px;
+}
+
+}

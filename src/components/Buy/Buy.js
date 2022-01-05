@@ -4,7 +4,7 @@ import axios from "axios";
 import "./Buy.css";
 
 ///
-function Aqar({ token ,role,id}) {
+function Aqar({ token ,role,idU}) {
 
   const history = useHistory();
   const [Aqar, setAqar] = useState([]);
@@ -64,28 +64,15 @@ const deleteAqar = async (id, index)=>{
 
   return (
     <div>
-           {token? 
-                            <button className="btn"  onClick={() => {  (add());}}> اضافه اعلان جديد </button>
-                            :""     }
-
+      {token? 
+        <button className="btn"  onClick={() => {  (add());}}> اضافه اعلان جديد </button>
+      :"" }
       <h1>ابحث عن عقارات للبيع في السعودية</h1>
-      <div>
-        <button className="btn" onClick={serchA}>
-          ابحث
-        </button>
-        <input
-          className="input"
-          id="input"
-          value={valueInput}
-          onChange={setvalue}
-          type="text"
-          placeholder="ابحث عن اسم المدينه"
-        />
+    <div>
+      <button className="btn" onClick={serchA}>ابحث </button>
+        <input className="input" id="input" value={valueInput} onChange={setvalue} type="text" placeholder="ابحث عن اسم المدينه"  />
 
-
-        
       </div>
-    {/* //////////////////////////////////////////////////////// */}
       { serch.length? serch.map((element, i) => {
         return (
           <div>
@@ -104,8 +91,12 @@ const deleteAqar = async (id, index)=>{
                         المدينه:{element.city}{" "}
                       </p>
                       {/* <button className="btn"  > تفاصيل أكثر </button> */}
-                      {role == 3 && element.user ==id? 
-                      <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      {role == 3 && element.user ==idU ? <>
+                        <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + element._id); }}> تحرير </button>
+
+                      </>
+                  
                       :""     }
                     </td>
 
@@ -116,8 +107,7 @@ const deleteAqar = async (id, index)=>{
                       
                       <div className="xx">
                         <img
-                           onClick={() => {  (Aqardetails(element._id));}}
-
+                        onClick={() => {  (Aqardetails(element._id));}}
                           className="imgAqar"
                           src={element.img}
                           alt="..."
@@ -132,7 +122,6 @@ const deleteAqar = async (id, index)=>{
         );
       })     
       : 
-   // {/* //////////////////////////////////////////////////////// */}
       Aqar.map((element, i) => {
         return (
           <div>
@@ -154,8 +143,12 @@ const deleteAqar = async (id, index)=>{
                       {/* <p>{element.user.name}</p> */}
                       {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
                       {/* <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button> */}
-                      {role == 3 && element.user ==id ? 
-                      <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      {role == 3 && element.user ==idU ? <>
+                        <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + element._id); }}> تحرير </button>
+
+                      </>
+                  
                       :""     }
                       {element.n}
                     </td>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { HiOutlineDocumentAdd} from 'react-icons/hi';
+import { GiReturnArrow } from 'react-icons/gi';
 import axios from "axios";
 
 export default function RentAdmin({token}) {
@@ -19,9 +21,9 @@ const [Rent, setRent] = useState([])
     return (
         <div>
                 <hr/>
-        <button onClick={() => {history.push("/Admin"); }}>الرجوع للوحة التحكم</button>  
+        <button onClick={() => {history.push("/Admin"); }}><GiReturnArrow/></button>  
      
-        <button>اضافه اعلان ايجار</button> 
+        <button><HiOutlineDocumentAdd/></button> 
      <hr/>
 
      

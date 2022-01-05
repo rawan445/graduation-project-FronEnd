@@ -22,7 +22,6 @@ export default function AqarDetails({token}) {
           تفاصيل
 
           <div>
-          <button className="btn"  onClick={() => {history.push("/UpdateRent/" + id); }}> تحرير </button>
           <h4>{a.price}</h4>  
           <img className="imgAqar1" src={a.img}alt="..."/>
           <iframe src={a.location} allowfullscreen="" loading="lazy"></iframe>

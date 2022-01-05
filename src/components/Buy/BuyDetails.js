@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./Buy.css"
+import { GiLoveHowl } from "react-icons/gi";
 
-export default function AqarDetails({token}) {
+export default function AqarDetails({token ,role,idU}) {
   const history = useHistory();
   const {id} = useParams()
   const [a, seta] = useState([])
@@ -21,10 +22,7 @@ export default function AqarDetails({token}) {
     return (
         <div>
           تفاصيل
-
           <div>
-            
-          <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + id); }}> تحرير </button>
           <h4>{a.price}</h4>  
           <img className="imgAqar1" src={a.img}alt="..."/>
           <iframe src={a.location} allowfullscreen="" loading="lazy"></iframe>

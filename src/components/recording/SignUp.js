@@ -30,7 +30,7 @@ export default function SignUp() {
       password: password,
     });
     if (response.status === 201){
-        history.push("/login")
+        history.push("/")
     }
   };
   return (

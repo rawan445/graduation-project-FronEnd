@@ -2,57 +2,56 @@
 import React,{useEffect , useState} from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import ProgressBar from '../../ProgressBar';
 
-export default function UpdateBuyAdmin({token }) {
+import axios from "axios";
+export default function UpdateCompAdmin({token }) {
     const history = useHistory();
 
     const {id} = useParams()
     const [a, seta] = useState([])
     const [name, setname] = useState("")
-    const [price, setprice] = useState("")
-    const [img, setimg] = useState("")
-    const [location, setlocation] = useState("")
-    const [space, setspace] = useState("")
+    const [logo, setimg] = useState("")
     const [city, setcity] = useState("")
-    const [mobileNumber, setmobileNumber] = useState("")
     const [description, setdescription] = useState("")
+    const [location, setlocation] = useState("")
+    const [mobileNumber, setmobileNumber] = useState("")
+    const [nameAqar, setnameAqar] = useState("")
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
   
     const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+
     useEffect(async () => {
-      const res = await axios.get(`http://localhost:5000/Buy/`+id, {
+      const res = await axios.get(`http://localhost:5000/company/`+id, {
       headers: { authorization: `Bearer ${token}`  },
       });
       setname(res.data.name)
-      setprice(res.data.price)
-      setimg(res.data.img)
-      setlocation(res.data.location)
-      setspace(res.data.space)
+      setimg(res.data.logo)
       setcity(res.data.city)
-      setmobileNumber(res.data.mobileNumber)
       setdescription(res.data.description)
+      setlocation(res.data.location)
+      setmobileNumber(res.data.mobileNumber)
+      setnameAqar(res.data.nameAqar)
+
       // console.log("id :",id);
       // console.log("Data : ",res.data);
       
     }, [token]);
     
   const updateH = async ()=>{
-    const upd = await axios.put(`http://localhost:5000/Buy/`+id,{ name, price, img, location, space,city, mobileNumber,description },
+    const upd = await axios.put(`http://localhost:5000/company/`+id,{ name ,logo,city,description,location,mobileNumber, nameAqar},
     {
       headers:{authorization: "Bearer " + token},
     }); 
     console.log("id :",id);
     seta(upd.data);
     console.log(upd.data,"dadt");
-    history.push("/BuyAdmin");
+    history.push("/CompAdmin");
 
   }
   console.log("id :",id);
   const BuyAdmin = (id) => {
-    history.push("/BuyAdmin/");
     // console.log("id BuyDetails : ",id);
 
     
@@ -72,6 +71,7 @@ export default function UpdateBuyAdmin({token }) {
     }
     setimg(e.target.value)
   };
+
   console.log("name",name);
     return (
         <div>
@@ -80,16 +80,16 @@ export default function UpdateBuyAdmin({token }) {
           </div>
 نعديل اعلان البيع Update Buy Admin
       <div className="add">  
+
       <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
-      <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" value={price}/>
-      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="img" value={img}/> */}
+      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="logo" value={logo}/> */}
       <input type="file" onChange={handleChange} />
 
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/>
-      <input onChange={(e) => {  (setspace(e.target.value));}} placeholder="space" value={space}/>
       <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" value={city}/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
       <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
+      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/>
+      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
+      <input onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar" value={nameAqar}/>
 
       <form>
       <label>
@@ -101,6 +101,7 @@ export default function UpdateBuyAdmin({token }) {
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
       </div>
     </form>
+    
       <button className="btn"  onClick={() => {  updateH(a._id); }}> تحرير </button>
       </div>
         </div>

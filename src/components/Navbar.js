@@ -51,6 +51,9 @@ const logout =  ()=>{
            {/* <li className="li"> <Link to="/CompDecor"> شركات ديكور </Link> </li> */}
            <li className="li"> <Link to="/Buy">اعلان بيع عقاري </Link>  </li>
           <li className="li">  <Link to="/rent">اعلان إيجار عقاري </Link> </li >
+          <li className="li">  <Link to="/Questions">الاستشارات العقارية  </Link> </li >
+
+          
           <details className="liq">
   <summary> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" style={{width:"0px"}}/> مرحبا {name}  </summary>
   <nav className="menu">

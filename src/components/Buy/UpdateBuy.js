@@ -1,6 +1,7 @@
 import React,{useEffect , useState} from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import ProgressBar from '../ProgressBar';
 import axios from "axios";
 export default function UpdateBuy({token }) {
     const history = useHistory();
@@ -15,6 +16,12 @@ export default function UpdateBuy({token }) {
     const [city, setcity] = useState("")
     const [mobileNumber, setmobileNumber] = useState("")
     const [description, setdescription] = useState("")
+    const [file, setFile] = useState(null);
+    const [error, setError] = useState(null);
+  
+    const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+
+    
     useEffect(async () => {
       const res = await axios.get(`http://localhost:5000/Buy/`+id, {
       headers: { authorization: `Bearer ${token}`  },
@@ -51,6 +58,23 @@ export default function UpdateBuy({token }) {
 
     
   };
+            
+  const handleChange = (e) => {
+    let selected = e.target.files[0];
+    
+
+
+    if (selected && types.includes(selected.type)) {
+      setFile(selected);
+      console.log(selected);
+      setError('');
+    } else {
+      setFile(null);
+      setError('Please select an image file (png or jpg)');
+    }
+    setimg(e.target.value)
+  };
+
   console.log("name",name);
     return (
         <div>
@@ -61,13 +85,25 @@ export default function UpdateBuy({token }) {
       <div className="add">  
       <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
       <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" value={price}/>
-      <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="img" value={img}/>
+      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="img" value={img}/> */}
+      <input type="file" onChange={handleChange} />
+
       <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/>
       <input onChange={(e) => {  (setspace(e.target.value));}} placeholder="space" value={space}/>
       <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" value={city}/>
       <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
       <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
 
+      <form>
+      <label>
+        {/* <input type="file" onChange={handleChange} /> */}
+      </label>
+      <div className="output">
+        { error && <div className="error">{ error }</div>}
+        { file && <div>{ file.name }</div> }
+        { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
+      </div>
+    </form>
       <button className="btn"  onClick={() => {  updateH(a._id); }}> تحرير </button>
       </div>
         </div>
