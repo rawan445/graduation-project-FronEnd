@@ -16,6 +16,11 @@ export default function UpdateBuy({token }) {
     const [city, setcity] = useState("")
     const [mobileNumber, setmobileNumber] = useState("")
     const [description, setdescription] = useState("")
+    const [bedRooms, setbedRooms] = useState("")
+    const [LivingRoom, setLivingRoom] = useState("")
+    const [bathRoom, setbathRoom] = useState("")
+    const [roleA, setroleA] = useState("")
+    const [propertyAge, setpropertyAge] = useState("")
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
   
@@ -35,13 +40,21 @@ export default function UpdateBuy({token }) {
       setcity(res.data.city)
       setmobileNumber(res.data.mobileNumber)
       setdescription(res.data.description)
+
+      setbedRooms(res.data.bedRooms)
+      setLivingRoom(res.data.LivingRoom)
+      setbathRoom(res.data.bathRoom)
+      setroleA(res.data.roleA)
+      setpropertyAge(res.data.propertyAge)
+
       // console.log("id :",id);
       // console.log("Data : ",res.data);
       
     }, [token]);
     
   const updateH = async ()=>{
-    const upd = await axios.put(`http://localhost:5000/Buy/`+id,{ name, price, img, location, space,city, mobileNumber,description },
+    const upd = await axios.put(`http://localhost:5000/Buy/`+id,   { name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
+
     {
       headers:{authorization: "Bearer " + token},
     }); 
@@ -61,8 +74,6 @@ export default function UpdateBuy({token }) {
             
   const handleChange = (e) => {
     let selected = e.target.files[0];
-    
-
 
     if (selected && types.includes(selected.type)) {
       setFile(selected);
@@ -78,33 +89,46 @@ export default function UpdateBuy({token }) {
   console.log("name",name);
     return (
         <div>
-             <div>
-          <button className="btn"  onClick={() => {  updateA(a._id); }}> رجوع </button>
-          </div>
-نعديل اعلان البيع
-      <div className="add">  
-      <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
-      <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" value={price}/>
-      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="img" value={img}/> */}
-      <input type="file" onChange={handleChange} />
+       <div className="addB">  
+          <h2> تحرير  الإعلان     </h2>
+          <hr/>
+          <label>: أسم العقار</label>
+        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name"  value={name}/>
+        <label>: صوره العقار</label>
+      <input className="inputC" type="file" onChange={handleChange} />
+      <label>: المدينة</label>
+      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" value={city}/>
+      <label>: غرف النوم</label>
+      <input className="inputC" onChange={(e) => {  (setbedRooms(e.target.value));}} placeholder="bedRooms" value={bedRooms}/>
+      <label>: غرف المعيشة</label>
+      <input className="inputC" onChange={(e) => {  (setLivingRoom(e.target.value));}} placeholder="LivingRoom" value={LivingRoom}/>
+      <label>: دورات المياة</label>
+      <input className="inputC" onChange={(e) => {  (setbathRoom(e.target.value));}} placeholder="bathRoom" value={bathRoom}/>
+      <label>:   الدور</label>
+      <input className="inputC" onChange={(e) => {  (setroleA(e.target.value));}} placeholder="role" value={roleA}/>
+      <label>: عمر العقار</label>
+      <input className="inputC" onChange={(e) => {  (setpropertyAge(e.target.value));}} placeholder="propertyAge" value={propertyAge}/>
+      <label>: مساحة  العقار</label>
+      <input className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"  value={space}/>
+      <label>: معلومات عن العقار</label>
+      <input className="inputC" onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"value={description}/>
+      <label>: موقع العقار على قوقل ماب</label>
+      <input className="inputC" onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/> 
+      <label>:سعر العقار</label>
+      <input className="inputC" onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" value={price}/>
+      <label>: رقم هاتف المنشأة</label>
+      <input className="inputC" onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"value={mobileNumber}/>
 
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/>
-      <input onChange={(e) => {  (setspace(e.target.value));}} placeholder="space" value={space}/>
-      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" value={city}/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
-      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
 
-      <form>
+    
       <label>
-        {/* <input type="file" onChange={handleChange} /> */}
       </label>
       <div className="output">
         { error && <div className="error">{ error }</div>}
         { file && <div>{ file.name }</div> }
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
       </div>
-    </form>
-      <button className="btn"  onClick={() => {  updateH(a._id); }}> تحرير </button>
+      <button className="buttt" onClick={() => { updateH()}} > Submit </button> 
       </div>
         </div>
     )

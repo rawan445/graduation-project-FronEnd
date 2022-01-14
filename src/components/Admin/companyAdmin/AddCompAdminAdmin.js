@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ProgressBar from '../../ProgressBar';
+import { GiReturnArrow } from 'react-icons/gi';
 
 import { useHistory } from "react-router-dom";
 // import "../add.css"
@@ -52,29 +53,37 @@ export default function AddAqar(props) {
               setimg(e.target.value)
             };
     return (<>
-        <div className="add">  
-        <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
-      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="logo" /> */}
-            <input type="file" onChange={handleChange} />
+       <div>
+          <button onClick={() => {history.push("/CompAdmin"); }}><GiReturnArrow/></button>  
 
-      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" />
-      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" />
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" />
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" />
-      <input onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar"/>
+          </div>
+          <div className="addC">  
+          <h2>تسجيل منشأة </h2>
+          <hr/>
+          <label>: أسم النمشأة</label>
+        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
+        <label>: شعار النمشأة</label>
 
-      
-      <form>
+      <input className="inputC"type="file" onChange={handleChange} />
+      <label>: المدينة</label>
+      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
+      <label>: معلومات عن المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
+      <label>: موقع المنشأة على قوقل ماب</label>
+      <input className="inputC"onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/>
+      <label>: رقم هاتف المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
+      <label>: عدد العقارات المتوفره في المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar"/>
+    
       <label>
-        {/* <input type="file" onChange={handleChange} /> */}
       </label>
       <div className="output">
         { error && <div className="error">{ error }</div>}
         { file && <div>{ file.name }</div> }
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
       </div>
-    </form>
-      <button onClick={() => { addAqars()}} > Submit </button>
+      <button className="buttt" onClick={() => { addAqars()}} > Submit </button> 
       </div>
         </>
     )

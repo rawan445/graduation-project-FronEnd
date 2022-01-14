@@ -20,7 +20,7 @@ margin: 10px;
   margin: 10px;
   border-radius: 20px;
   padding: 10px;
-  background: url("https://almithaq.com.kw/assets/images/chalets/bg.png") left bottom/25% no-repeat #fff;
+  background: url("https://j.top4top.io/p_2201qghqw1.png") left bottom/30% no-repeat #fff;
   position: relative;
 
 }
@@ -92,13 +92,37 @@ margin: 10px;
   justify-content:left;
 
 }
- .input{
-   width: 200px;
-   height: 40px;
-   border-radius: 15px;
-   margin: 10px;
 
- }
+ 
+.addB{
+  padding: 15px;
+  margin-left: 224px;
+  border: 1px outset #4B6587;
+text-align: center;
+  width: 600px;
+  height: 1053px;
+  box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
+-webkit-box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
+-moz-box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
+}
+.tableText{
+font-size: 50px;
+color: #4B6587;
+}
+.tableText1{
+  color: #4B6587;
+
+  font-family: 'El Messiri', sans-serif;
+
+}
+.tableDiv{
+  background-color: #C8C6C6;
+    /* padding: 68px; */
+    border: 3px solid #212529;
+    margin: 11px;}
+    h2{
+      padding: 23px;
+    }
 @media only screen and (max-width: 900px) {
     
   .imgAqar{
@@ -110,5 +134,9 @@ margin: 10px;
   }
   .myDiv{
     height: 448px;
+  }
+  .addB {
+    margin-left: 9px;
+    width: 365px;
   }
   }

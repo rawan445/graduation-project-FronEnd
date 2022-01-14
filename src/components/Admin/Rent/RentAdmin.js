@@ -15,15 +15,26 @@ const [Rent, setRent] = useState([])
  
 
     const deleteRent = async (id, index)=>{
-        console.log("id : ",id  ,"token : ",token ,"i :",index);
-    
+      console.log("id : ",id  ,"token : ",token);
+     
+      const deletedAqar = await axios.delete('http://localhost:5000/RentAdmin/'+id,{
+        headers:{authorization: "Bearer " + token},
+      });
+      if (deletedAqar.data === "deleted") {
+       const copiedArr = [...Rent];
+       copiedArr.splice(index, 1);
+       setRent(copiedArr);
+      }    
      }
     return (
         <div>
                 <hr/>
+
+                <h2>إعلانات الإيجار  </h2>
+
         <button onClick={() => {history.push("/Admin"); }}><GiReturnArrow/></button>  
-     
-        <button><HiOutlineDocumentAdd/></button> 
+        
+        <button onClick={() => {history.push("/AddRentAdmin"); }}><HiOutlineDocumentAdd/></button> 
      <hr/>
 
      
@@ -38,7 +49,7 @@ const [Rent, setRent] = useState([])
   </tr>
   <tr className="tr">
   
-    <td onClick={() => {history.push("/RentAdmin"); }}>✏️</td>
+    <td onClick={() => {history.push("/UpdateRentAdmin/" + element._id); }}>✏️</td>
     <td onClick={() => {  deleteRent(element._id ,i); }}>🗑︎</td>
     <td>{element.name}</td>
   </tr>

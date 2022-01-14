@@ -65,32 +65,36 @@ export default function UpdateCompany({token}) {
   };
     return (
         <div>
-            UpdateCompany
+  
+      <div className="addC">  
+<h2>لتعديل معلومات المنشأة </h2>
+<hr/>
+<label>: أسم النمشأة</label>
+       <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
+       <label>: شعار النمشأة</label>
 
-
-            <div className="add">  
-      <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
-      {/* <input onChange={(e) => { (setimg(e.target.value)); }} placeholder="logo" value={logo}/> */}
-      <input type="file" onChange={handleChange} />
-
-      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" value={city}/>
-      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
-      <input onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar" value={nameAqar}/>
-
-      <form>
+      <input className="inputC"type="file" onChange={handleChange} />
+      <label>: المدينة</label>
+      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"value={city}/>
+      <label>: معلومات عن المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
+      <label>: موقع المنشأة على قوقل ماب</label>
+      <input className="inputC"onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"value={location}/>
+      <label>: رقم هاتف المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"value={mobileNumber}/>
+      <label>: عدد العقارات المتوفره في المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar" value={nameAqar}/>
+    
       <label>
-        {/* <input type="file" onChange={handleChange} /> */}
       </label>
       <div className="output">
         { error && <div className="error">{ error }</div>}
         { file && <div>{ file.name }</div> }
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
       </div>
-    </form>
-      <button className="btn"  onClick={() => {  updateH(a._id); }}> تحرير </button>
+   
+      <button className="buttt" onClick={() => { updateH()}} > Submit </button> 
+
       </div>
         </div>
     )

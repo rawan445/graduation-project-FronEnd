@@ -1,66 +1,66 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { HiOutlineDocumentAdd} from 'react-icons/hi';
-import { GiReturnArrow } from 'react-icons/gi';
+import { HiOutlineDocumentAdd } from "react-icons/hi";
+import { GiReturnArrow } from "react-icons/gi";
 
-
-import "./BuyAdmin.css"
+import "./BuyAdmin.css";
 
 export default function BuyAdmin(props) {
-  const {token ,settoken} = props
+  const { token, settoken } = props;
 
-    const [BuyA, setBuyA] = useState([])
-    const history = useHistory();
-    useEffect(async () => {
-        const res = await axios.get("http://localhost:5000/Buys", {
-        });
-        setBuyA(res.data);
-        console.log("Data : ",res.data);
-      }, []);
+  const [BuyA, setBuyA] = useState([]);
+  const history = useHistory();
 
-    
-      const deleteUser = async (id, index)=>{
-        console.log("id : ",id  ,"token : ",token);
-     
-       const deletedAqar = await axios.delete('http://localhost:5000/BuyAdmin/'+id,{
-         headers:{authorization: "Bearer " + token},
-       });
-       console.log("delete : ",deletedAqar.data);
-       if (deletedAqar.status === 203){
-         const copiedArr= [...BuyA];
-       copiedArr.splice(index,1);
-       setBuyA(copiedArr);
-       }
-            //  setUser(User);
+  useEffect(async () => {
+    const res = await axios.get("http://localhost:5000/Buys", {});
+    setBuyA(res.data);
+    console.log("Data : ", res.data);
+  }, []);
+
+  const deleteUser = async (id, index) => {
+    console.log("id : ", id, "token : ", token);
+
+    const deletedAqar = await axios.delete(
+      "http://localhost:5000/BuyAdmin/" + id,
+      {
+        headers: { authorization: "Bearer " + token },
       }
-    return (
-        <div>
-                    <hr/>
-<button onClick={() => {history.push("/Admin"); }}><GiReturnArrow/></button>   
-<button onClick={() => {history.push("/AddBuyAdmin"); }}><HiOutlineDocumentAdd/></button>  
-<hr/>
+    );
+    if (deletedAqar.data === "deleted") {
+      const copiedArr = [...BuyA];
+      copiedArr.splice(index, 1);
+      setBuyA(copiedArr);
+    }
+  };
+  return (
+    <div>
+      <hr />
+      <h2>إعلانات البيع </h2>
 
-{BuyA.map((element, i) => {
-        return (<>
+      <button onClick={() => { history.push("/Admin"); }} > <GiReturnArrow /></button>
+      <button onClick={() => { history.push("/AddBuyAdmin"); }}><HiOutlineDocumentAdd /> </button>
+      <hr />
 
-<table className="table">
-  <tr className="tr">
-    <th >تحرير</th>
-    <th>حذف</th>
-    <th>اسم اعلان البيع</th>
-  </tr>
-  <tr className="tr">
-  
-    <td onClick={() => {history.push("/UpdateBuyAdmin/" + element._id); }}>✏️</td>
-    <td onClick={() => {  deleteUser(element._id ,i); }}>🗑︎</td>
-    <td>{element.name}</td>
-  </tr>
-  
-</table>
-</>
-)
-})}
-   </div>
-    )
+      {BuyA.map((element, i) => {
+        return (
+          <>
+            <table className="table">
+              <tr className="tr">
+                <th>تحرير</th>
+                <th>حذف</th>
+                <th>اسم اعلان البيع</th>
+              </tr>
+
+              <tr className="tr">
+                <td onClick={() => {  history.push("/UpdateBuyAdmin/" + element._id);    }}  > ✏️  </td>
+                <td onClick={() => {  deleteUser(element._id, i); }}  > 🗑︎</td>
+                <td>{element.name}</td>
+              </tr>
+            </table>
+          </>
+        );
+      })}
+    </div>
+  );
 }

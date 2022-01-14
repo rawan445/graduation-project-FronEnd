@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { MdBedroomChild ,MdLiving,MdBathroom,MdOutlineMapsHomeWork,MdRealEstateAgent  } from "react-icons/md";
+
+import { CgSpaceBetween} from "react-icons/cg";
+
 import "./Buy.css";
 
 ///
@@ -85,10 +89,14 @@ const deleteAqar = async (id, index)=>{
                         عنوان العقار : {element.name}
                       </span>
                       <p className="title-background">
-                        وصف :{element.description}{" "}
+                        وصف :{element.description}
                       </p>
                       <p className="title-background">
-                        المدينه:{element.city}{" "}
+                        المدينه:{element.city}
+                      </p>
+                      <p className="title-background">
+                     <CgSpaceBetween/> {element.space} , <MdBedroomChild/> {element.bedRooms} , <MdLiving/> {element.LivingRoom} ,
+                     <MdBathroom/> {element.bathRoom} , <MdOutlineMapsHomeWork/> {element.roleA} , <MdRealEstateAgent/> {element.propertyAge}
                       </p>
                       {/* <button className="btn"  > تفاصيل أكثر </button> */}
                       {role == 3 && element.user ==idU ? <>
@@ -134,12 +142,18 @@ const deleteAqar = async (id, index)=>{
                         عنوان العقار : {element.name}
                       </span>
                       <p className="title-background">
-                        وصف :{element.description}{" "}
+                        وصف :{element.description}
                       </p>
-
                       <p className="title-background">
-                        المدينه:{element.city}{" "}
+                        المدينه:{element.city}
                       </p>
+                      <p className="title-background">
+                     <CgSpaceBetween/> {element.space}  <MdBedroomChild/> {element.bedRooms}  <MdLiving/> {element.LivingRoom} 
+                     <MdBathroom/> {element.bathRoom}  <MdOutlineMapsHomeWork/> {element.roleA}  <MdRealEstateAgent/> {element.propertyAge}
+                      </p>
+                 
+                
+
                       {/* <p>{element.user.name}</p> */}
                       {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
                       {/* <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button> */}

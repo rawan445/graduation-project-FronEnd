@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import ProgressBar from '../ProgressBar';
 import { useHistory } from "react-router-dom";
-import "./add.css"
 //
 export default function AddAqar(props) {
   const history = useHistory();
@@ -15,6 +14,13 @@ export default function AddAqar(props) {
   const [city, setcity] = useState("")
   const [mobileNumber, setmobileNumber] = useState("")
   const [description, setdescription] = useState("")
+
+  const [bedRooms, setbedRooms] = useState("")
+  const [LivingRoom, setLivingRoom] = useState("")
+  const [bathRoom, setbathRoom] = useState("")
+  const [roleA, setroleA] = useState("")
+  const [propertyAge, setpropertyAge] = useState("")
+
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
   const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
@@ -22,7 +28,7 @@ export default function AddAqar(props) {
       const addAqars=async ()=>{
         const result = await axios.post(
           "http://localhost:5000/Buy",
-          { name, price, img, location, space,city, mobileNumber,description },
+          { name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
           {
             headers: { authorization: `Bearer ${token}` },
           });
@@ -43,19 +49,47 @@ export default function AddAqar(props) {
   };
 
     return (<>
-      <div className="add">  
-      <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
-      <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
-      <input type="file" onChange={handleChange} />
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/>
-      <input onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
-      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
-      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
-        { error && <div>{ error }</div>}
+    <div className="addB">  
+          <h2> أضافه إعلان بيع عقاري </h2>
+          <hr/>
+          <label>: أسم العقار</label>
+        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
+        <label>: صوره العقار</label>
+      <input className="inputC" type="file" onChange={handleChange} />
+      <label>: المدينة</label>
+      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
+      <label>: مساحة  العقار</label>
+      <input className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
+
+      <label>: غرف النوم</label>
+      <input className="inputC" onChange={(e) => {  (setbedRooms(e.target.value));}} placeholder="bedRooms"/>
+      <label>: غرف المعيشة</label>
+      <input className="inputC" onChange={(e) => {  (setLivingRoom(e.target.value));}} placeholder="LivingRoom"/>
+      <label>: دورات المياة</label>
+      <input className="inputC" onChange={(e) => {  (setbathRoom(e.target.value));}} placeholder="bathRoom"/>
+      <label>:         الدور</label>
+      <input className="inputC" onChange={(e) => {  (setroleA(e.target.value));}} placeholder="role"/>
+      <label>: عمر العقار</label>
+      <input className="inputC" onChange={(e) => {  (setpropertyAge(e.target.value));}} placeholder="propertyAge"/>
+      <label>: معلومات عن العقار</label>
+      <input className="inputC" onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
+      <label>: موقع العقار على قوقل ماب</label>
+      <input className="inputC" onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/> 
+      <label>:سعر العقار</label>
+      <input className="inputC" onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
+      <label>: رقم هاتف المنشأة</label>
+      <input className="inputC" onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
+
+    
+      <label>
+      </label>
+      <div className="output">
+        { error && <div className="error">{ error }</div>}
         { file && <div>{ file.name }</div> }
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
-      <br/>  <button onClick={() => { addAqars()}} > Submit </button>
-    </div>  
+      </div>
+      <button className="buttt" onClick={() => { addAqars()}} > Submit </button> 
+      </div>
         </>
     )}
+    

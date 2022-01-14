@@ -3,6 +3,8 @@ import React,{useEffect , useState} from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import ProgressBar from '../../ProgressBar';
+import { GiReturnArrow } from 'react-icons/gi';
+
 
 import axios from "axios";
 export default function UpdateCompAdmin({token }) {
@@ -51,11 +53,7 @@ export default function UpdateCompAdmin({token }) {
 
   }
   console.log("id :",id);
-  const BuyAdmin = (id) => {
-    // console.log("id BuyDetails : ",id);
 
-    
-  };
   const handleChange = (e) => {
     let selected = e.target.files[0];
     
@@ -76,33 +74,39 @@ export default function UpdateCompAdmin({token }) {
     return (
         <div>
              <div>
-          <button className="btn"  onClick={() => {  BuyAdmin(a._id); }}> رجوع </button>
+          <button onClick={() => {history.push("/CompAdmin"); }}><GiReturnArrow/></button>  
+
           </div>
 نعديل اعلان البيع Update Buy Admin
-      <div className="add">  
+   
 
-      <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
-      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="logo" value={logo}/> */}
-      <input type="file" onChange={handleChange} />
+      <div className="addC">  
+          <h2>تعديل بيانات منشأة </h2>
+          <hr/>
+          <label>: أسم النمشأة</label>
+        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
+        <label>: شعار النمشأة</label>
 
-      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" value={city}/>
-      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
-      <input onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar" value={nameAqar}/>
-
-      <form>
+      <input className="inputC"type="file" onChange={handleChange} />
+      <label>: المدينة</label>
+      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"value={city}/>
+      <label>: معلومات عن المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
+      <label>: موقع المنشأة على قوقل ماب</label>
+      <input className="inputC"onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"value={location} />
+      <label>: رقم هاتف المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"value={mobileNumber}/>
+      <label>: عدد العقارات المتوفره في المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar"value={nameAqar}/>
+    
       <label>
-        {/* <input type="file" onChange={handleChange} /> */}
       </label>
       <div className="output">
         { error && <div className="error">{ error }</div>}
         { file && <div>{ file.name }</div> }
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
       </div>
-    </form>
-    
-      <button className="btn"  onClick={() => {  updateH(a._id); }}> تحرير </button>
+      <button className="buttt" onClick={() => { updateH()}} > Submit </button> 
       </div>
         </div>
     )

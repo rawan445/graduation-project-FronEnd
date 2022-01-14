@@ -6,7 +6,9 @@ import axios from "axios";
 export default function AqarDetails({token}) {
   const history = useHistory();
   const {id} = useParams()
-  const [a, seta] = useState([])
+  const [a, seta] = useState(null)
+
+  const [img1, setimg1] = useState("")
 
   useEffect(async () => {
     const res = await axios.get(`http://localhost:5000/Rent/`+id, {
@@ -16,22 +18,57 @@ export default function AqarDetails({token}) {
     seta(res.data);
     console.log("Data : ",res.data);
     
-  }, []);
-    return (
+  }, [token]);
+
+  
+  const addImg = async () => {
+    try {
+      const result = await axios.post(`http://localhost:5000/AddImgR/${id}`,{img :img1},{
+        headers: { authorization: "Bearer " + token },
+      })
+      seta({ ...a, img: result.data.img1 });
+      console.log("add img",result.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+      return (
+        <>
+        {a!= null ?  
+        
         <div>
-          تفاصيل
+        تفاصيل
+        <div>
+<input type="text"  placeholder='img'  onChange={(e) => {  (setimg1(e.target.value));}}/>
+<br />
+<button onClick={()=>{addImg()}} className='add'> Add ExtraImg</button>
+     </div>
+       <div>
+       <img className="imgAqar1" src={a.img}alt="..."/>
+            
+     {a.img1.map((element)=>{
+return(
+<div>
+<img  src={element} alt="" /> 
+</div>
 
-          <div>
-          <h4>{a.price}</h4>  
-          <img className="imgAqar1" src={a.img}alt="..."/>
-          <iframe src={a.location} allowfullscreen="" loading="lazy"></iframe>
-          <h4>{a.description}</h4>
-          <h4>{a.space}</h4>
-          <h4>{a.city}</h4>
-          <h4>{a.mobileNumber}</h4>
-          </div>
+)
 
-        </div>
+})}
+       <iframe src={a.location} allowfullscreen="" loading="lazy"></iframe>
+       <h4>{a.price}</h4>  
+       <h4>{a.description}</h4>
+       <h4>{a.space}</h4>
+       <h4>{a.city}</h4>
+       <h4>{a.mobileNumber}</h4>
+       </div>
+
+     </div>
+       
+       :""}
+       
+       
+       </>
     )
 }
 

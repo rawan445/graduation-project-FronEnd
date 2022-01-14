@@ -51,13 +51,19 @@ export default function UpdateUserAdmin({token}) {
      </div>
 
 تعديل بيانات المستخدم 
- <div className="add">  
- <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
- <input onChange={(e) => { (setemail(e.target.value)); }} placeholder="email"value={email} />
 
- 
- <button className="btn"  onClick={() => {  updateH(a._id); }}> تحرير </button>
+ <div className="addC">  
+          <h2>تسجيل مستخدم جديد </h2>
+          <hr/>
+          <label>: أسم المستخدم</label>
+        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name} />
+        <label>: البريد الالتروني</label>
+        <input className="inputC" onChange={(e) => {  (setemail(e.target.value)) ; }} placeholder="email" value={email}/>
+   
+
+
+      <button className="buttt" onClick={() => { updateH()}} > Submit </button> 
+      </div>
  </div>
-   </div>
     )
 }

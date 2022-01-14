@@ -1,11 +1,10 @@
-
 import React,{useEffect , useState} from "react";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import ProgressBar from '../../ProgressBar';
+import axios from "axios";
 
-export default function UpdateBuyAdmin({token }) {
+export default function UpdateRent({token }) {
     const history = useHistory();
 
     const {id} = useParams()
@@ -19,13 +18,14 @@ export default function UpdateBuyAdmin({token }) {
     const [mobileNumber, setmobileNumber] = useState("")
     const [description, setdescription] = useState("")
     const [file, setFile] = useState(null);
-    const [error, setError] = useState(null);
-  
-    const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+  const [error, setError] = useState(null);
+
+  const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+
     useEffect(async () => {
-      const res = await axios.get(`http://localhost:5000/Buy/`+id, {
-      headers: { authorization: `Bearer ${token}`  },
-      });
+      const res = await axios.get(`http://localhost:5000/Rent/`+id, {
+        headers: { authorization: `Bearer ${token}`  },
+        });
       setname(res.data.name)
       setprice(res.data.price)
       setimg(res.data.img)
@@ -40,23 +40,18 @@ export default function UpdateBuyAdmin({token }) {
     }, [token]);
     
   const updateH = async ()=>{
-    const upd = await axios.put(`http://localhost:5000/Buy/`+id,{ name, price, img, location, space,city, mobileNumber,description },
+    const upd = await axios.put(`http://localhost:5000/Rent/`+id,{ name, price, img, location, space,city, mobileNumber,description },
     {
       headers:{authorization: "Bearer " + token},
     }); 
-    console.log("id :",id);
+    // console.log("id :",id);
     seta(upd.data);
     console.log(upd.data,"dadt");
-    history.push("/BuyAdmin");
+    history.push("/RentAdmin");
 
   }
-  console.log("id :",id);
-  const BuyAdmin = (id) => {
-    history.push("/BuyAdmin/");
-    // console.log("id BuyDetails : ",id);
 
-    
-  };
+                     
   const handleChange = (e) => {
     let selected = e.target.files[0];
     
@@ -72,31 +67,28 @@ export default function UpdateBuyAdmin({token }) {
     }
     setimg(e.target.value)
   };
-  console.log("name",name);
-    return (<>
-             
-          <button className="btn"  onClick={() => {  BuyAdmin(a._id); }}> رجوع </button>
+    return (
+        <div>
 
-
-      <div className="addB">  
-          <h2> أضافه إعلان بيع عقاري </h2>
+        <div className="addB">  
+          <h2> تحرير الإعلان   </h2>
           <hr/>
           <label>: أسم العقار</label>
-        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name"value={name} />
+        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" value={name}/>
         <label>: صوره العقار</label>
       <input className="inputC" type="file" onChange={handleChange} />
       <label>: المدينة</label>
-      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city" value={city}/>
+      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"value={city}/>
       <label>: مساحة  العقار</label>
-      <input className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space "  value={space}/>
+      <input className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"value={space}/>
       <label>: معلومات عن العقار</label>
       <input className="inputC" onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description" value={description}/>
       <label>: موقع العقار على قوقل ماب</label>
-      <input className="inputC" onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location" value={location}/> 
+      <input className="inputC" onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"value={location}/> 
       <label>:سعر العقار</label>
-      <input className="inputC" onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" value={price}/>
+      <input className="inputC" onChange={(e) => { (setprice(e.target.value)); }} placeholder="price"value={price} />
       <label>: رقم هاتف المنشأة</label>
-      <input className="inputC" onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
+      <input className="inputC" onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"value={mobileNumber}/>
 
 
     
@@ -109,10 +101,6 @@ export default function UpdateBuyAdmin({token }) {
       </div>
       <button className="buttt" onClick={() => { updateH()}} > Submit </button> 
       </div>
-        </>
+   </div>
     )
 }
-
-
-
-

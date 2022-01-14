@@ -50,30 +50,35 @@ export default function AddRentAdmin(props) {
             };
     return (<>
     Add Rent Admin
-        <div className="add">  
-      <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
-      <input onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
-      {/* <input onChange={(e) => {  (setimg(e.target.value));}} placeholder="img"/> */}
-      <input type="file" onChange={handleChange} />
+    
+      <div className="addB">  
+          <h2> أضافه إعلان إيجار عقاري </h2>
+          <hr/>
+      <label>: أسم العقار</label>
+      <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
+      <label>: صوره العقار</label>
+      <input className="inputC" type="file" onChange={handleChange} />
+      <label>: المدينة</label>
+      <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
+      <label>: مساحة  العقار</label>
+      <input className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
+      <label>: معلومات عن العقار</label>
+      <input className="inputC" onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
+      <label>: موقع العقار على قوقل ماب</label>
+      <input className="inputC" onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/> 
+      <label>:سعر العقار</label>
+      <input className="inputC" onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
+      <label>: رقم هاتف المنشأة</label>
+      <input className="inputC" onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
 
-      <input onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/>
-      <input onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
-      <input onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
-      <input onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
-      <input onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
-
-
-      <form>
       <label>
-        {/* <input type="file" onChange={handleChange} /> */}
       </label>
       <div className="output">
         { error && <div className="error">{ error }</div>}
         { file && <div>{ file.name }</div> }
         { file && <ProgressBar file={file} setFile={setFile} setimg={setimg} /> }
       </div>
-    </form>
-      <button onClick={() => { addRent()}} > Submit </button>
+      <button className="buttt" onClick={() => { addRent()}} > Submit </button> 
       </div>
         </>
     )

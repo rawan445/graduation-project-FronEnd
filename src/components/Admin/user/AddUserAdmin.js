@@ -21,16 +21,20 @@ export default function AddUserAdmin(props) {
 
             }
     return (<>
-     <button onClick={() => {history.push("/UserAdmin"); }} className="tt"><GiReturnArrow/></button>  
-     Add user (Admin) 
+     <button onClick={() => {history.push("/UserAdmin"); }} className="tt"><GiReturnArrow/></button>  <hr/>
+      <div className="addC">  
+          <h2>تسجيل مستخدم جديد </h2>
+          <hr/>
+          <label>: أسم المستخدم</label>
+        <input className="inputC" onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
+        <label>: البريد الالتروني</label>
+        <input className="inputC" onChange={(e) => {  (setemail(e.target.value)) ; }} placeholder="email" />
+        <label>: الرقم السري </label>
+        <input className="inputC"  onChange={(e) => {  (setpassword(e.target.value));}} placeholder="password"/>
+   
 
-        <div className="add">  
-      <input onChange={(e) => {  (setname(e.target.value)) ; }} placeholder="name" />
-      <input onChange={(e) => { (setemail(e.target.value)); }} placeholder="email" />
-      <input onChange={(e) => {  (setpassword(e.target.value));}} placeholder="password"/>
-  
 
-      <button onClick={() => { addUser()}} > Submit </button>
+      <button className="buttt" onClick={() => { addUser()}} > Submit </button> 
       </div>
         </>
     )
