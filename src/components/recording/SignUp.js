@@ -24,7 +24,7 @@ export default function SignUp() {
         email: email,
         password: password,
       });
-    const response = await axios.post("https://aqar-ksa.herokuapp.com/signUp", {
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signUp`, {
       name: name,
       email: email,
       password: password,

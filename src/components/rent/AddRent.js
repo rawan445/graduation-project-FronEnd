@@ -33,7 +33,7 @@ export default function AddAqar(props) {
   
       const addRent=async ()=>{
         const result = await axios.post(
-          "https://aqar-ksa.herokuapp.com/Rent",
+          `${process.env.REACT_APP_BACKEND_URL}/Rent`,
           { name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
           {
             headers: { authorization: `Bearer ${token}` },

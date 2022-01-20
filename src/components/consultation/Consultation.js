@@ -20,7 +20,7 @@ function Consultation({ token ,role,idU}) {
   const [toggel2, settoggel2] = useState(false)
 
   useEffect(async () => {
-    const res = await axios.get("https://aqar-ksa.herokuapp.com/consultations", {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/consultations`, {
       headers: {authorization: `Bearer ${token}` },
     });
     setarrCon(res.data);
@@ -29,7 +29,7 @@ function Consultation({ token ,role,idU}) {
   
   const addcons=async ()=>{
     const result = await axios.post(
-      "https://aqar-ksa.herokuapp.com/consultations",
+      `${process.env.REACT_APP_BACKEND_URL}/consultations`,
       { consultation },
       {
         headers: { authorization: `Bearer ${token}` },
@@ -49,7 +49,7 @@ function Consultation({ token ,role,idU}) {
       settoggel(true)
     try {
     const result = await axios.post(
-      "https://aqar-ksa.herokuapp.com/answer/"+id,
+      `${process.env.REACT_APP_BACKEND_URL}/answer/`+id,
       { answer},
       {
         headers: { authorization: `Bearer ${token}` },
@@ -88,9 +88,9 @@ const changAdd =()=>{
 </div>
    <div className="divvv">
 
-   
+   {role == 3?<>
 <button className="btn"   onClick={() => { changAdd()}}  >اضف استشارتك</button>
-
+</> :""}
    {/* <input onChange={(e) => {  (setconsultation(e.target.value)) ; }} placeholder="...أكتب الاستشاره" /> */}
    {toggel2 === true ?<> 
    <CKEditor
@@ -114,15 +114,18 @@ const changAdd =()=>{
 <table className="tableA">
   <tr className="trA">
     <th className="thA">      <h1>{parse(element.consultation)} </h1>
+    <button  className="btn11"onClick={() => { changAanswer(element._id,i)}}> عرض الردود </button> 
+    
 </th>
   </tr>
 
  
 </table>
-        
-      <button  className="btn11"onClick={() => { changAanswer(element._id,i)}}> عرض الردود </button> 
-      <button className="btn11" onClick={() => { changAanswerAdd(element._id,i)}}> اضافه رد </button> 
 
+  {role == 2 ?<>
+      <button className="btn11" onClick={() => { changAanswerAdd(element._id,i)}}> اضافه رد </button> 
+</> :""}
+     
 {toggel === true ?<> 
   {element.answer.map((ele)=>{
     console.log(ele.username);

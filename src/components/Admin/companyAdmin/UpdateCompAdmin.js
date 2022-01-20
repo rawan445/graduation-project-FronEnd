@@ -25,7 +25,7 @@ export default function UpdateCompAdmin({token }) {
     const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
 
     useEffect(async () => {
-      const res = await axios.get(`https://aqar-ksa.herokuapp.com/company/`+id, {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/company/`+id, {
       headers: { authorization: `Bearer ${token}`  },
       });
       setname(res.data.name)
@@ -42,7 +42,7 @@ export default function UpdateCompAdmin({token }) {
     }, [token]);
     
   const updateH = async ()=>{
-    const upd = await axios.put(`https://aqar-ksa.herokuapp.com/company/`+id,{ name ,logo,city,description,location,mobileNumber, nameAqar},
+    const upd = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/company/`+id,{ name ,logo,city,description,location,mobileNumber, nameAqar},
     {
       headers:{authorization: "Bearer " + token},
     }); 

@@ -13,7 +13,7 @@ export default function BuyAdmin(props) {
   const history = useHistory();
 
   useEffect(async () => {
-    const res = await axios.get("https://aqar-ksa.herokuapp.com/Buys", {});
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Buys`, {});
     setBuyA(res.data);
     console.log("Data : ", res.data);
   }, []);
@@ -22,7 +22,7 @@ export default function BuyAdmin(props) {
     console.log("id : ", id, "token : ", token);
 
     const deletedAqar = await axios.delete(
-      "https://aqar-ksa.herokuapp.com/BuyAdmin/" + id,
+      `${process.env.REACT_APP_BACKEND_URL}/BuyAdmin/` + id,
       {
         headers: { authorization: "Bearer " + token },
       }

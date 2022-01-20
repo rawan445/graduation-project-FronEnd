@@ -12,7 +12,7 @@ export default function AddUserAdmin(props) {
     const [password, setpassword] = useState("")
     
     const addUser=async ()=>{
-        const result = await axios.post( "https://aqar-ksa.herokuapp.com/signUp",{ name, email, password},
+        const result = await axios.post( `${process.env.REACT_APP_BACKEND_URL}/signUp`,{ name, email, password},
           {
             headers: { authorization: `Bearer ${token}` },
           });

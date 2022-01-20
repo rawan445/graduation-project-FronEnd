@@ -12,7 +12,7 @@ export default function UpdateUserAdmin({token}) {
 
 
     useEffect(async () => {
-      const res = await axios.get(`https://aqar-ksa.herokuapp.com/user/`+id, {
+      const res = await axios.get(`h${process.env.REACT_APP_BACKEND_URL}/user/`+id, {
         headers: { authorization: `Bearer ${token}`  },
         });
         seta(res.data)
@@ -27,7 +27,7 @@ export default function UpdateUserAdmin({token}) {
 
 
   const updateH = async ()=>{
-    const upd = await axios.put(`hhttps://aqar-ksa.herokuapp.com/user/`+id,{ name, email },
+    const upd = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/user/`+id,{ name, email },
     {
       headers:{authorization: "Bearer " + token},
     }); 

@@ -8,7 +8,7 @@ export default function Company({ token, role, idU }) {
   const [Company, setCompany] = useState([]);
 
   useEffect(async () => {
-    const res = await axios.get("https://aqar-ksa.herokuapp.com/companys", {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/companys`, {
       headers: { authorization: `Bearer ${token}` },
     });
     setCompany(res.data);
@@ -23,7 +23,7 @@ export default function Company({ token, role, idU }) {
     // console.log("id : ",id  ,"token : ",token);
 
     const deletedAqar = await axios.delete(
-      "https://aqar-ksa.herokuapp.com/company/" + id,
+      `${process.env.REACT_APP_BACKEND_URL}/company/` + id,
       {
         headers: { authorization: "Bearer " + token },
       }

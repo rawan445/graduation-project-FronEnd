@@ -15,7 +15,7 @@ function Aqar({ token ,role ,idU}) {
 
 //
   useEffect(async () => {
-    const res = await axios.get("https://aqar-ksa.herokuapp.com/Rents", {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Rents`, {
       headers: {authorization: `Bearer ${token}` },
     });
     setAqar(res.data);
@@ -46,7 +46,7 @@ function Aqar({ token ,role ,idU}) {
 //Aqar delet
 const deleteAqar = async (id, index)=>{
    console.log(id,"iiiiiiiiiiiiiii");
-  const deletedAqar = await axios.delete('https://aqar-ksa.herokuapp.com/Rent/'+id,{
+  const deletedAqar = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/Rent/`+id,{
     headers:{authorization: "Bearer " + token},
   });
   console.log((deletedAqar.data));

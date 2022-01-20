@@ -12,7 +12,7 @@ export default function User({ token }) {
   const [role, setrole] = useState("");
 
   useEffect(async () => {
-    const res = await axios.get("https://aqar-ksa.herokuapp.com/users", {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
       headers: { authorization: `Bearer ${token}` },
     });
     setUser(res.data);
@@ -22,7 +22,7 @@ export default function User({ token }) {
   const deleteUser = async (id, index) => {
     // console.log("id : ", id, "token : ", token);
 
-    const deletedAqar = await axios.delete("https://aqar-ksa.herokuapp.com/user/" + id, {
+    const deletedAqar = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/user/`+ id, {
       headers: { authorization: "Bearer " + token },
     });
     console.log("delete : ", deletedAqar.data);
@@ -35,7 +35,7 @@ export default function User({ token }) {
   const updateH = async (id, i) => {
     console.log("hi");
     const upd = await axios.put(
-      `https://aqar-ksa.herokuapp.com/user/` + id,
+      `${process.env.REACT_APP_BACKEND_URL}/user/` + id,
       { role },
       {
         headers: { authorization: "Bearer " + token },

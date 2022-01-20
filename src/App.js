@@ -31,9 +31,10 @@ import CompAdmin from "./components/Admin//companyAdmin/CompAdmin"
 import UpdateCompAdmin from "./components/Admin//companyAdmin/UpdateCompAdmin"
 import AddCompAdminAdmin from "./components/Admin/companyAdmin/AddCompAdminAdmin"
 import UpdateRentAdmin from "./components/Admin//Rent/UpdateRentAdmin"
+require("dotenv").config();
 
 export default function App() {
-
+console.log("bbbbbbb : ",process.env.REACT_APP_BACKEND_URL );
 
   const [token, setToken] = useState("");
   const [role, setRole] = useState(0);
@@ -97,15 +98,15 @@ if (!role) {
         </>
     : role == 2 ? <> 
       <Route  exact   path="/Addcompany" render={() => { return <Addcompany token={token} />;}} />
-      <Route  exact   path="/Consultation" render={() => { return <Consultation token={token} />;}} />
+      <Route  exact   path="/Consultation" render={() => { return <Consultation token={token} role={role} />;}} />
 
-      <Route  exact   path="/UpdateCompany/:id" render={() => { return <UpdateCompany token={token} />;}} />
+      <Route  exact   path="/UpdateCompany/:id" render={() => { return <UpdateCompany token={token}  />;}} />
 
       
       
     </> :  role == 3 ? <> 
       <Route  exact   path="/AddBuy" render={() => { return <AddBuy token={token} />;}} />
-      <Route  exact   path="/Consultation" render={() => { return <Consultation token={token} />;}} />
+      <Route  exact   path="/Consultation" render={() => { return <Consultation token={token}  role={role}/>;}} />
       <Route  exact   path="/AddRent" render={() => { return <AddRent token={token} />;}} />
       <Route  exact   path="/UpdateBuy/:id" render={() => { return <UpdateBuy token={token} />;}} />
       <Route  exact   path="/UpdateRent/:id" render={() => { return <UpdateRent token={token} role={role}/>;}} />    

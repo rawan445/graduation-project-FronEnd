@@ -9,9 +9,11 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
     const [password, setPassword] = useState("");
   
     const checkLogin = async (event) => {
+ 
+        
       try {
         event.preventDefault();
-        const response = await axios.post("https://aqar-ksa.herokuapp.com/login", {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
           email: email,
           password: password,
         });
@@ -62,6 +64,7 @@ localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
 setToken(response.data.token)
 
           history.push("/Buy");
+        
         }
       } catch (error) {
         console.log("error : ",error.response.data);

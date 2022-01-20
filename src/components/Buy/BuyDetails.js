@@ -42,7 +42,7 @@ export default function AqarDetails({token ,role,idU}) {
   };
 
   useEffect(async () => {
-    const res = await axios.get(`https://aqar-ksa.herokuapp.com/Buy/`+id, {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Buy/`+id, {
     headers: { authorization: `Bearer ${token}`  },
     });
     // console.log("id :",id);
@@ -57,7 +57,7 @@ export default function AqarDetails({token ,role,idU}) {
 
   const addImg = async () => {
     try {
-      const result = await axios.post(`https://aqar-ksa.herokuapp.comAddImg/${id}`,{img :img1},{
+      const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/AddImg/${id}`,{img :img1},{
         headers: { authorization: "Bearer " + token },
       })
       seta({ ...a, img: result.data.img1 });

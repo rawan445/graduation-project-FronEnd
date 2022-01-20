@@ -28,7 +28,7 @@ export default function UpdateBuy({token }) {
 
     
     useEffect(async () => {
-      const res = await axios.get(`https://aqar-ksa.herokuapp.com/Buy/`+id, {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Buy/`+id, {
       headers: { authorization: `Bearer ${token}`  },
       });
       //
@@ -53,7 +53,7 @@ export default function UpdateBuy({token }) {
     }, [token]);
     
   const updateH = async ()=>{
-    const upd = await axios.put(`https://aqar-ksa.herokuapp.com/Buy/`+id,   { name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
+    const upd = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/Buy/`+id,   { name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
 
     {
       headers:{authorization: "Bearer " + token},

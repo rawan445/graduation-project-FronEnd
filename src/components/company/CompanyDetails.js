@@ -10,7 +10,7 @@ export default function CompanyDetails({token}) {
     const [a, seta] = useState([])
 
   useEffect(async () => {
-    const res = await axios.get(`https://aqar-ksa.herokuapp.com/company/`+id, {
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/company/`+id, {
     headers: { authorization: `Bearer ${token}`  },
     });
     // console.log("id :",id);
