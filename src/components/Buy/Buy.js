@@ -16,7 +16,7 @@ function Aqar({ token ,role,idU}) {
   const [serch, setSerch] = useState([]);
 //
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/Buys", {
+    const res = await axios.get("https://aqar-ksa.herokuapp.com/Buys", {
       headers: {authorization: `Bearer ${token}` },
     });
     setAqar(res.data);
@@ -53,7 +53,7 @@ function Aqar({ token ,role,idU}) {
 const deleteAqar = async (id, index)=>{
    console.log("id : ",id  ,"token : ",token);
 
-  const deletedAqar = await axios.delete('http://localhost:5000/Buy/'+id,{
+  const deletedAqar = await axios.delete('https://aqar-ksa.herokuapp.com/Buy/'+id,{
     headers:{authorization: "Bearer " + token},
   });
   console.log("delete : ",deletedAqar.data);
@@ -65,7 +65,6 @@ const deleteAqar = async (id, index)=>{
 
 }
 // console.log('role',role);
-
   return (
     <div>
       {token? 
@@ -79,22 +78,19 @@ const deleteAqar = async (id, index)=>{
       </div>
       { serch.length? serch.map((element, i) => {
         return (
-          <div>
+          <div key={element._id}>
             <div className="wrapper" key={element._id}>
               <div className="card">
                 <table>
-                  <tr>
+                  <tbody>
                     <td>
                       <span className="title-background">
                         عنوان العقار : {element.name}
                       </span>
-                      <p className="title-background">
-                        وصف :{element.description}
-                      </p>
-                      <p className="title-background">
+                      <p className="title-background1">
                         المدينه:{element.city}
                       </p>
-                      <p className="title-background">
+                      <p className="title-background2">
                      <CgSpaceBetween/> {element.space} , <MdBedroomChild/> {element.bedRooms} , <MdLiving/> {element.LivingRoom} ,
                      <MdBathroom/> {element.bathRoom} , <MdOutlineMapsHomeWork/> {element.roleA} , <MdRealEstateAgent/> {element.propertyAge}
                       </p>
@@ -122,7 +118,7 @@ const deleteAqar = async (id, index)=>{
                         />
                       </div>
                     </td>
-                  </tr>
+                  </tbody>
                 </table>
               </div>
             </div>
@@ -132,22 +128,19 @@ const deleteAqar = async (id, index)=>{
       : 
       Aqar.map((element, i) => {
         return (
-          <div>
+          <div  key={element._id}>
             <div className="wrapper" key={element._id}>
               <div className="card" >
                 <table>
-                  <tr>
+                  <tbody>
                     <td>
                       <span className="title-background">
                         عنوان العقار : {element.name}
                       </span>
-                      <p className="title-background">
-                        وصف :{element.description}
-                      </p>
-                      <p className="title-background">
+                      <p className="title-background1">
                         المدينه:{element.city}
                       </p>
-                      <p className="title-background">
+                      <p className="title-background11">
                      <CgSpaceBetween/> {element.space}  <MdBedroomChild/> {element.bedRooms}  <MdLiving/> {element.LivingRoom} 
                      <MdBathroom/> {element.bathRoom}  <MdOutlineMapsHomeWork/> {element.roleA}  <MdRealEstateAgent/> {element.propertyAge}
                       </p>
@@ -181,7 +174,7 @@ const deleteAqar = async (id, index)=>{
                         />
                       </div>
                     </td>
-                  </tr>
+                  </tbody>
                 </table>
               </div>
             </div>

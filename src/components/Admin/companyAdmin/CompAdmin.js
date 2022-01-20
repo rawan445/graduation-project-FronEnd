@@ -9,7 +9,7 @@ export default function CompAdmin({ token }) {
   const [BuyA, setBuyA] = useState([]);
 
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/companys", {});
+    const res = await axios.get("https://aqar-ksa.herokuapp.com/companys", {});
     setBuyA(res.data);
     console.log("Data : ", res.data);
   }, []);
@@ -18,7 +18,7 @@ export default function CompAdmin({ token }) {
     console.log("id : ", id, "token : ", token);
 
     const deletedAqar = await axios.delete(
-      "http://localhost:5000/company/" + id,
+      "https://aqar-ksa.herokuapp.com/company/" + id,
       {
         headers: { authorization: "Bearer " + token },
       }
@@ -40,7 +40,7 @@ export default function CompAdmin({ token }) {
 
       {BuyA.map((element, i) => {
         return (
-          <>
+          <div  key={element._id}>
             <table className="table">
               <tr className="tr">
                 <th>تحرير</th>
@@ -53,7 +53,7 @@ export default function CompAdmin({ token }) {
                 <td>{element.name}</td>
               </tr>
             </table>
-          </>
+          </div>
         );
       })}
     </div>

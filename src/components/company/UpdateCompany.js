@@ -16,12 +16,14 @@ export default function UpdateCompany({token}) {
     const [location, setlocation] = useState("")
     const [mobileNumber, setmobileNumber] = useState("")
     const [nameAqar, setnameAqar] = useState("")
+    const [email, setemail] = useState("")
+    const [website, setwebsite] = useState("")
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
   
     const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
     useEffect(async () => {
-        const res = await axios.get(`http://localhost:5000/company/`+id, {
+        const res = await axios.get(`https://aqar-ksa.herokuapp.com/company/`+id, {
         headers: { authorization: `Bearer ${token}`  },
         });
         //
@@ -32,13 +34,13 @@ export default function UpdateCompany({token}) {
         setlocation(res.data.location)
         setmobileNumber(res.data.mobileNumber)
         setnameAqar(res.data.nameAqar)
-
-  
+        setemail(res.data.email)
+        setwebsite(res.data.website)
         
       }, [token]);
          
   const updateH = async ()=>{
-    const upd = await axios.put(`http://localhost:5000/company/`+id,{  name ,logo,city,description,location,mobileNumber, nameAqar},
+    const upd = await axios.put(`https://aqar-ksa.herokuapp.com/company/`+id,{  name ,logo,city,description,location,mobileNumber, nameAqar,email, website},
     {
       headers:{authorization: "Bearer " + token},
     }); 
@@ -82,6 +84,10 @@ export default function UpdateCompany({token}) {
       <input className="inputC"onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"value={location}/>
       <label>: رقم هاتف المنشأة</label>
       <input className="inputC"onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"value={mobileNumber}/>
+      <label>: بريد الالكتروني المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setemail(e.target.value));}} placeholder="mobileNumber" value={website}/>
+      <label>: موقع ويب المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setwebsite(e.target.value));}} placeholder="mobileNumber"value={email}/>
       <label>: عدد العقارات المتوفره في المنشأة</label>
       <input className="inputC"onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar" value={nameAqar}/>
     

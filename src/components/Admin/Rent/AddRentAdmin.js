@@ -24,7 +24,7 @@ export default function AddRentAdmin(props) {
   
       const addRent=async ()=>{
         const result = await axios.post(
-          "http://localhost:5000/Rent",
+          "https://aqar-ksa.herokuapp.com/Rent",
           { name, price, img, location, space,city, mobileNumber,description },
           {
             headers: { authorization: `Bearer ${token}` },

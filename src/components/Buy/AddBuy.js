@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import ProgressBar from '../ProgressBar';
 import { useHistory } from "react-router-dom";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
 //
 export default function AddAqar(props) {
   const history = useHistory();
@@ -12,7 +15,7 @@ export default function AddAqar(props) {
   const [location, setlocation] = useState("")
   const [space, setspace] = useState("")
   const [city, setcity] = useState("")
-  const [mobileNumber, setmobileNumber] = useState("")
+  const [mobileNumber, setmobileNumber] = useState("966")
   const [description, setdescription] = useState("")
 
   const [bedRooms, setbedRooms] = useState("")
@@ -27,7 +30,7 @@ export default function AddAqar(props) {
 
       const addAqars=async ()=>{
         const result = await axios.post(
-          "http://localhost:5000/Buy",
+          "https://aqar-ksa.herokuapp.com/Buy",
           { name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
           {
             headers: { authorization: `Bearer ${token}` },
@@ -59,26 +62,32 @@ export default function AddAqar(props) {
       <label>: المدينة</label>
       <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
       <label>: مساحة  العقار</label>
-      <input className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
-
+      <input type="number" className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
+      <label>: غرف </label>
+      <input  type="number" className="inputC" onChange={(e) => {  (setLivingRoom(e.target.value));}} placeholder="LivingRoom"/>
       <label>: غرف النوم</label>
-      <input className="inputC" onChange={(e) => {  (setbedRooms(e.target.value));}} placeholder="bedRooms"/>
-      <label>: غرف المعيشة</label>
-      <input className="inputC" onChange={(e) => {  (setLivingRoom(e.target.value));}} placeholder="LivingRoom"/>
+      <input  type="number" className="inputC"   onChange={(e) => {  (setbedRooms(e.target.value));}} placeholder="bedRooms"/>
       <label>: دورات المياة</label>
-      <input className="inputC" onChange={(e) => {  (setbathRoom(e.target.value));}} placeholder="bathRoom"/>
+      <input type="number" className="inputC" onChange={(e) => {  (setbathRoom(e.target.value));}} placeholder="bathRoom"/>
       <label>:         الدور</label>
-      <input className="inputC" onChange={(e) => {  (setroleA(e.target.value));}} placeholder="role"/>
+      <input type="number" className="inputC" onChange={(e) => {  (setroleA(e.target.value));}} placeholder="role"/>
       <label>: عمر العقار</label>
       <input className="inputC" onChange={(e) => {  (setpropertyAge(e.target.value));}} placeholder="propertyAge"/>
       <label>: معلومات عن العقار</label>
-      <input className="inputC" onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
+      {/* <input className="inputC" onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/> */}
+      <CKEditor
+              editor={ClassicEditor}
+              data={description}
+              onChange={(e, editor) => {
+                const data = editor.getData();
+                setdescription(data);
+              }}/>
       <label>: موقع العقار على قوقل ماب</label>
       <input className="inputC" onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/> 
       <label>:سعر العقار</label>
-      <input className="inputC" onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
+      <input type="number"className="inputC" onChange={(e) => { (setprice(e.target.value)); }} placeholder="price" />
       <label>: رقم هاتف المنشأة</label>
-      <input className="inputC" onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
+      <input type="number" className="inputC" onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber" value={mobileNumber}/>
 
     
       <label>

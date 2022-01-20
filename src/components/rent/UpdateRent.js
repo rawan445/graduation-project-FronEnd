@@ -27,7 +27,7 @@ export default function UpdateRent({token }) {
   const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
 
     useEffect(async () => {
-      const res = await axios.get(`http://localhost:5000/Rent/`+id, {
+      const res = await axios.get(`https://aqar-ksa.herokuapp.com/Rent/`+id, {
         headers: { authorization: `Bearer ${token}`  },
         });
       setname(res.data.name)
@@ -50,7 +50,7 @@ export default function UpdateRent({token }) {
     }, [token]);
     
   const updateH = async ()=>{
-    const upd = await axios.put(`http://localhost:5000/Rent/`+id,{ name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
+    const upd = await axios.put(`https://aqar-ksa.herokuapp.com/Rent/`+id,{ name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },
     {
       headers:{authorization: "Bearer " + token},
     }); 

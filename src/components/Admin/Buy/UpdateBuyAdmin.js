@@ -23,7 +23,7 @@ export default function UpdateBuyAdmin({token }) {
   
     const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
     useEffect(async () => {
-      const res = await axios.get(`http://localhost:5000/Buy/`+id, {
+      const res = await axios.get(`https://aqar-ksa.herokuapp.com/Buy/`+id, {
       headers: { authorization: `Bearer ${token}`  },
       });
       setname(res.data.name)
@@ -40,7 +40,7 @@ export default function UpdateBuyAdmin({token }) {
     }, [token]);
     
   const updateH = async ()=>{
-    const upd = await axios.put(`http://localhost:5000/Buy/`+id,{ name, price, img, location, space,city, mobileNumber,description },
+    const upd = await axios.put(`https://aqar-ksa.herokuapp.com/Buy/`+id,{ name, price, img, location, space,city, mobileNumber,description },
     {
       headers:{authorization: "Bearer " + token},
     }); 

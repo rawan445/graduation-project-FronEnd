@@ -14,6 +14,18 @@ margin: 10px;
 
 
 }
+.thAa{
+  border: 1px solid #C8C6C6;
+  text-align: center;
+  padding: 8px
+;
+  background:  #4b6587b3;;
+  color: #4b6587;
+  font-family: arial, sans-serif;
+}
+.ppp{
+  color: #dee2e6;
+}
 .card {
   color: #117d9c;
   overflow: hidden;
@@ -48,6 +60,7 @@ margin: 10px;
   background: #4B6587;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  margin: 12px;
 
 }
 
@@ -76,7 +89,7 @@ margin: 10px;
   -moz-box-sizing: border-box;
   margin: 0 10px; */
 }
-.title-background{
+.title-background ,.background1,.background11{
   position: relative;
   padding: 10px 10px 0;
   display:flex;
@@ -96,14 +109,14 @@ margin: 10px;
  
 .addB{
   padding: 15px;
-  margin-left: 224px;
+  margin-left: 446px;
   border: 1px outset #4B6587;
-text-align: center;
+  text-align: center;
   width: 600px;
-  height: 1053px;
-  box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
--webkit-box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
--moz-box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
+  height: 1596px;
+  
+  box-shadow: 10px 6px 17px 0px rgb(115 114 114);
+  -webkit-box-shadow: 10px 6px 17px 0px rgb(115 114 114);
 }
 .tableText{
 font-size: 50px;
@@ -123,15 +136,31 @@ color: #4B6587;
     h2{
       padding: 23px;
     }
+    .immmg{
+      width:896;
+      height:504;
+   
+    }
 @media only screen and (max-width: 900px) {
-    
+  .himg{
+    background-image: url(https://k.top4top.io/p_2208ay4go1.png);
+  }
   .imgAqar{
-    width: 166px;
-
+    margin-top: -205px;
+    width: 303px;
+    height: 239px;
+    margin-left: -341px;
+  }
+  .title-background{
+    margin-top: 202px;
+    width: 328px;
+  }
+  
+  .title-background11{
+    font-size: 20px;
   }
   .card{
-
-  }
+    background: url(https://j.top4top.io/p_2201qghqw1.png) left bottom/100% no-repeat #fff;  }
   .myDiv{
     height: 448px;
   }

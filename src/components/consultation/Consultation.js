@@ -1,99 +1,170 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import axios from "axios";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import parse from "html-react-parser";
+ import axios from "axios";
 
 ///
 function Consultation({ token ,role,idU}) {
     const {id} = useParams()
 
-    const [allcouers, setallcouers] = useState(null);
 
-  const [arrData, setarrData] = useState(null);
+  // const [arrData, setarrData] = useState([]);
+  const [arrCon, setarrCon] = useState(null)
 
   const [consultation, setconsultation] = useState("")
   const [answer, setanswer] = useState("")
-
+  const [toggel, settoggel] = useState(false)
+  const [toggel1, settoggel1] = useState(false)
+  const [toggel2, settoggel2] = useState(false)
 
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/consultations", {
+    const res = await axios.get("https://aqar-ksa.herokuapp.com/consultations", {
       headers: {authorization: `Bearer ${token}` },
     });
-    setarrData(res.data);
-    
+    setarrCon(res.data);
     console.log(res.data);
-
   }, [token]);
-
-
-
-
+  
   const addcons=async ()=>{
     const result = await axios.post(
-      "http://localhost:5000/consultations",
+      "https://aqar-ksa.herokuapp.com/consultations",
       { consultation },
       {
         headers: { authorization: `Bearer ${token}` },
-      });
+      });   
+      // setconsultation(result.data.consultation)
+      setarrCon(result.data)
+
+      console.log("consultation : ",result.data);
+    // const copy=[...arrCon]
+    // copy.consultation = result.data;
+    // setconsultation(copy)
+    //   console.log("consultation : ",copy);
   }
 
-  
-  const addanswer=async ()=>{
+  const addanswer=async (id ,i)=>{
+    console.log("id :",id ,"i ",i);
+      settoggel(true)
+    try {
     const result = await axios.post(
-      "http://localhost:5000/answer/"+id,
-      { consultation },
+      "https://aqar-ksa.herokuapp.com/answer/"+id,
+      { answer},
       {
         headers: { authorization: `Bearer ${token}` },
       });
-      setallcouers(result.data);
-
+      // setanswer(result.data.answer);
+      console.log("aaaaaaaa :",result.data);
+      const copuarr =[...arrCon]
+      copuarr[i].answer = result.data.answer;
+      setarrCon(copuarr)
+    } catch (error) {
+      console.log(error);
+    }
   }
+const changAanswer =(id ,i)=>{
+  console.log("id",id ,"iiiiiiiiiiiiiiiiiiii",i);
+    settoggel(!toggel)
 
-  return (
-   <>
-   {arrData != null ? 
+}
+const changAanswerAdd =(id ,i)=>{
+  console.log("id",id ,"iiiiiiiiiiiiiiiiiiii",i);
+  settoggel1(!toggel1)
+
+}
+const changAdd =()=>{
+  settoggel2(!toggel2)
+
+}
+  return (<>
+
+ {arrCon!== null ?   <div>
    
-   <div>
-   <input onChange={(e) => {  (setconsultation(e.target.value)) ; }} placeholder="...أكتب الاستشاره" />
-   <button  onClick={() => { addcons()}} > Submit </button> 
-
-<hr/>
-{/* <p> schg :{arrData.consultation}</p>
-
-       <p> رد :{arrData.answer}</p>
-
-         */}
-       {arrData.map((element)=>{
-  return(
-<div>
-<h1> schg :{element.consultation}</h1>
-
-<p> {element.answer}</p>
-
-{/*    
-{arrData.map((element)=>{
-  return(
-<div>
-<p> {element}</p>
+<div _ngcontent-uby-c90="" class="forYou">
+<h1 className='h1foo'>الاستشارات العقارية</h1>
+<h4  className="h2sss"> هي تهدف لتثقيف الوسيط العقاري والزبون العقاري بمجال العقار ، وكذلك من يرغب بالدخول بمجال العقار أو لديه أي رغبه بالتعامل العقاري </h4>
+   
 </div>
+   <div className="divvv">
 
-  )
+   
+<button className="btn"   onClick={() => { changAdd()}}  >اضف استشارتك</button>
 
-})} */}
-<input onChange={(e) => {  (setanswer(e.target.value)) ; }} placeholder="...رد الاستشاره" />
-   <button  onClick={() => { addanswer()}} > أضافة رد </button> 
-   <hr/>
-</div>
+   {/* <input onChange={(e) => {  (setconsultation(e.target.value)) ; }} placeholder="...أكتب الاستشاره" /> */}
+   {toggel2 === true ?<> 
+   <CKEditor
+              editor={ClassicEditor}
+              data={answer}
+              onChange={(e, editor) => {
+                const data = editor.getData();
+                setconsultation(data);
+              }}/>
 
-  )
+      <button className="btn" onClick={() => { addcons()}} > إرسال </button> 
+    </>:""}
+   </div>
+    
 
-})}  
+      {arrCon.map((element,i)=>{
+        return(
+      <div  key={element._id}>
+
+
+<table className="tableA">
+  <tr className="trA">
+    <th className="thA">      <h1>{parse(element.consultation)} </h1>
+</th>
+  </tr>
+
+ 
+</table>
+        
+      <button  className="btn11"onClick={() => { changAanswer(element._id,i)}}> عرض الردود </button> 
+      <button className="btn11" onClick={() => { changAanswerAdd(element._id,i)}}> اضافه رد </button> 
+
+{toggel === true ?<> 
+  {element.answer.map((ele)=>{
+    console.log(ele.username);
+
+return<>
+<table className="tableA">
+  <tr className="trA">
+    <th className="thAa"><p className="ppp">
+      {parse(ele)}    </p>
+</th>
+  </tr>
   
+</table>
 
-     </div>
-    :""}
-    </>
-    );
+
+</>
+})}
+</>   :""}
+     
+{toggel1 === true ?<> 
+
+  <CKEditor
+              editor={ClassicEditor}
+              data={answer}
+              onChange={(e, editor) => {
+                const data = editor.getData();
+                setanswer(data);
+              }}/>
+
+        <button  className="btn11" onClick={() => { addanswer(element._id ,i)}} >  رد </button>  </> :""} 
+         
+      </div>
+      
+        )
+      
+      })}
+      
+          </div>
+      
+      :("")}
+ 
+    </>);
     }
 
 export default Consultation;

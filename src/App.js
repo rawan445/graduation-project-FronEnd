@@ -97,6 +97,8 @@ if (!role) {
         </>
     : role == 2 ? <> 
       <Route  exact   path="/Addcompany" render={() => { return <Addcompany token={token} />;}} />
+      <Route  exact   path="/Consultation" render={() => { return <Consultation token={token} />;}} />
+
       <Route  exact   path="/UpdateCompany/:id" render={() => { return <UpdateCompany token={token} />;}} />
 
       

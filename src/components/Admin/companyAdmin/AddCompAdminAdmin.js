@@ -26,7 +26,7 @@ export default function AddAqar(props) {
 
       const addAqars=async ()=>{
         const result = await axios.post(
-          "http://localhost:5000/company",
+          "https://aqar-ksa.herokuapp.com/company",
           {name ,logo,city,description,location,mobileNumber, nameAqar },
           {
             headers: { authorization: `Bearer ${token}` },

@@ -25,7 +25,7 @@ export default function AddBuyAdmin(props) {
   
       const addAqars = async ()=>{
         const result = await axios.post(
-          "http://localhost:5000/Buy",
+          "hhttps://aqar-ksa.herokuapp.com/Buy",
           { name, price, img, location, space,city, mobileNumber,description },
           {
             headers: { authorization: `Bearer ${token}` },

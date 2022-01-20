@@ -15,7 +15,7 @@ function Aqar({ token ,role ,idU}) {
 
 //
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/Rents", {
+    const res = await axios.get("https://aqar-ksa.herokuapp.com/Rents", {
       headers: {authorization: `Bearer ${token}` },
     });
     setAqar(res.data);
@@ -46,7 +46,7 @@ function Aqar({ token ,role ,idU}) {
 //Aqar delet
 const deleteAqar = async (id, index)=>{
    console.log(id,"iiiiiiiiiiiiiii");
-  const deletedAqar = await axios.delete('http://localhost:5000/Rent/'+id,{
+  const deletedAqar = await axios.delete('https://aqar-ksa.herokuapp.com/Rent/'+id,{
     headers:{authorization: "Bearer " + token},
   });
   console.log((deletedAqar.data));
@@ -85,7 +85,7 @@ const deleteAqar = async (id, index)=>{
     {/* //////////////////////////////////////////////////////// */}
       { serch.length? serch.map((element, i) => {
         return (
-          <div>
+          <div  key={element._id}>
             <div className="wrapper" key={element._id}>
               <div className="card">
                 <table>
@@ -145,7 +145,7 @@ const deleteAqar = async (id, index)=>{
 
       Aqar.map((element, i) => {
         return (
-          <div>
+          <div  key={element._id}>
             <div className="wrapper" key={element._id}>
               <div className="card" >
                 <table>

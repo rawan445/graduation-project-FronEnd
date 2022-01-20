@@ -24,7 +24,7 @@ export default function SignUp() {
         email: email,
         password: password,
       });
-    const response = await axios.post("http://localhost:5000/signUp", {
+    const response = await axios.post("https://aqar-ksa.herokuapp.com/signUp", {
       name: name,
       email: email,
       password: password,
@@ -34,32 +34,42 @@ export default function SignUp() {
     }
   };
   return (
-    <div className="divS"> 
+    <div className="addB">  
+          <h2> تسجيل </h2>
+          <hr/>
+       
+       <form id="form" className="form">
+             <h2>تسجيل </h2>
+            
+                 <label >اسم المستخدم </label>
+                 <input  onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
+                 <label >بريد إلكتروني</label>
+                 <input onChange={(e) => { changeEmail(e); }}  type="email" id="email" placeholder="Enter eamil" />
+                 <label >كلمة المرور</label>
+                 <input onChange={(e) => {    changePassword(e);  }} type="password" id="password" placeholder="Enter passowrd" />
 
-      <div className="container">
-        <form id="form" className="form">
-            <h2>تسجيل </h2>
-            <div className="form-control">
-                <label htmlFor="username">اسم المستخدم </label>
-                <input  onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
-            </div>
-            <div className="form-control">
-                <label htmlFor="eamil">بريد إلكتروني</label>
-                <input onChange={(e) => { changeEmail(e); }}  type="email" id="email" placeholder="Enter eamil" />
-            </div>
-            <div className="form-control">
-                <label htmlFor="passowrd">كلمة المرور</label>
-                <input onChange={(e) => {    changePassword(e);  }} type="password" id="password" placeholder="Enter passowrd" />
-            </div>
-          
-            <button onClick={(e) => {  addUser();  }} type="submit">سجل</button>
-        </form>
-    </div>
+             <button  className="buttt"onClick={(e) => {  addUser();  }} type="submit">سجل</button>
+         </form>
+  
+          {/* <label>: اسم المستخدم</label>
+        <input onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
+        <label>: بريد إلكتروني</label>
+        <input  onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
+      <label>: كلمة المرور</label>
+          <input onChange={(e) => {    changePassword(e);  }} type="password" id="password" placeholder="Enter passowrd" />
+    
+      
+      <button className="buttt" onClick={(e) => {  addUser();  }} > Submit </button>  */}
+      </div>
+
+    // <div className="divS"> 
+
+    //  
 
 
 
       
-    </div>
+    // </div>
     
   );
 }

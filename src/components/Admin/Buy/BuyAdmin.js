@@ -13,7 +13,7 @@ export default function BuyAdmin(props) {
   const history = useHistory();
 
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/Buys", {});
+    const res = await axios.get("https://aqar-ksa.herokuapp.com/Buys", {});
     setBuyA(res.data);
     console.log("Data : ", res.data);
   }, []);
@@ -22,7 +22,7 @@ export default function BuyAdmin(props) {
     console.log("id : ", id, "token : ", token);
 
     const deletedAqar = await axios.delete(
-      "http://localhost:5000/BuyAdmin/" + id,
+      "https://aqar-ksa.herokuapp.com/BuyAdmin/" + id,
       {
         headers: { authorization: "Bearer " + token },
       }
@@ -44,7 +44,7 @@ export default function BuyAdmin(props) {
 
       {BuyA.map((element, i) => {
         return (
-          <>
+          <div  key={element._id}>
             <table className="table">
               <tr className="tr">
                 <th>تحرير</th>
@@ -58,7 +58,7 @@ export default function BuyAdmin(props) {
                 <td>{element.name}</td>
               </tr>
             </table>
-          </>
+          </div>
         );
       })}
     </div>

@@ -11,7 +11,7 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
     const checkLogin = async (event) => {
       try {
         event.preventDefault();
-        const response = await axios.post("http://localhost:5000/login", {
+        const response = await axios.post("https://aqar-ksa.herokuapp.com/login", {
           email: email,
           password: password,
         });

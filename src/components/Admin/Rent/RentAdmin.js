@@ -8,7 +8,7 @@ export default function RentAdmin({token}) {
     const history = useHistory();
 const [Rent, setRent] = useState([])
     useEffect(async () => {
-        const res = await axios.get("http://localhost:5000/Rents", {
+        const res = await axios.get("https://aqar-ksa.herokuapp.com/Rents", {
         });
         setRent(res.data);
       }, []);
@@ -17,7 +17,7 @@ const [Rent, setRent] = useState([])
     const deleteRent = async (id, index)=>{
       console.log("id : ",id  ,"token : ",token);
      
-      const deletedAqar = await axios.delete('http://localhost:5000/RentAdmin/'+id,{
+      const deletedAqar = await axios.delete('https://aqar-ksa.herokuapp.com/RentAdmin/'+id,{
         headers:{authorization: "Bearer " + token},
       });
       if (deletedAqar.data === "deleted") {
@@ -39,7 +39,7 @@ const [Rent, setRent] = useState([])
 
      
 {Rent.map((element, i) => {
-        return (<>
+        return (<div  key={element._id}>
 
 <table className="table">
   <tr className="tr">
@@ -55,7 +55,7 @@ const [Rent, setRent] = useState([])
   </tr>
   
 </table>
-</>
+</div>
 )
 })}
         </div>

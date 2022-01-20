@@ -1,7 +1,7 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto ;
+    grid-template-columns: 1fr 1fr ;
     padding: 2px;
     
   }
@@ -13,4 +13,121 @@
     text-align: center;    
 
   }  
-  
+  .immgg1{
+
+    width: 358px;
+    margin-left: -393px;
+  }
+  .immgg2{
+
+    width: 358px;
+    margin-left: 105px;
+
+  }
+  .h4foo{
+    margin-left: 620px;
+    top: 1677px;
+    left: 766px;
+    margin-left: 864px;
+    width: 501px;
+    text-align: right;
+    /* font: normal normal bold 36px/26px Ah-moharram; */
+    letter-spacing: 0px;
+    color: #4a4a4a;
+    opacity: 1;
+    line-height: 1.1;
+  }
+  .h1foo{
+    /* color: #213e56;
+    margin-top: -16px;
+    margin-left: 795px;
+    padding: 28px; */
+    text-align: right;
+    /* font:'El Messiri', sans-serif  48px/66px ; */
+    letter-spacing: 0px;
+    color: #213e56;
+    opacity: 1;
+    top: 1597px;
+    left: 1101px;
+    height: 27px;
+    padding: 64px;
+  }
+  .forYou[_ngcontent-uby-c90] {
+    background-image: url(https://gomenassat.com/foryou.png);
+    background-size: cover;
+    background-position: left;
+    height: 292px;
+    margin-top: -14px;
+
+    
+  }
+  .btn11 {
+    height: 45px;
+    width: 118px;
+    margin: 7px;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #F7F6F2;
+    font-size: 15px;
+    background: #4B6587;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+input{
+  border-radius: 9px;
+
+}
+.divvv{
+  padding: 21px;
+}
+.h2sss{
+
+  margin-left: 1080px  ;
+    width: 378px;
+}
+  @media only screen and (max-width: 900px) {
+    .h2sss{
+      border-radius: 17px;
+      margin-left: 6px;
+      background: #ffffff75;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto  ;
+      padding: 2px;
+      
+    }
+    .h1foo{
+      /* margin-left: 110px; */
+      /* font-size: 10px; */
+      width: auto;
+      text-align: center;
+    }
+    .h4foo{
+      border-radius: 17px;
+      margin-left: 23px;
+      background: #ffffff75;
+      /* margin-left: 110px; */
+      /* font-size: 10px; */
+      width: 351px;
+      padding: 8px;
+      /* margin-left: 110px; */
+      /* font-size: 10px; */
+      /* width: auto;
+      text-align: center; */
+    }
+    .forYou[_ngcontent-uby-c90] {
+      height: 286px;
+
+}
+.immgg1{
+  margin-left: -178px;
+  margin-top: -271px;
+  width: 190px;
+}
+    .immgg2{
+      width: 190px;
+      margin-left: 176px;
+  }
+  }

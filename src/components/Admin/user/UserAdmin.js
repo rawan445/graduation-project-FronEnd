@@ -12,7 +12,7 @@ export default function User({ token }) {
   const [role, setrole] = useState("");
 
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/users", {
+    const res = await axios.get("https://aqar-ksa.herokuapp.com/users", {
       headers: { authorization: `Bearer ${token}` },
     });
     setUser(res.data);
@@ -22,7 +22,7 @@ export default function User({ token }) {
   const deleteUser = async (id, index) => {
     // console.log("id : ", id, "token : ", token);
 
-    const deletedAqar = await axios.delete("http://localhost:5000/user/" + id, {
+    const deletedAqar = await axios.delete("https://aqar-ksa.herokuapp.com/user/" + id, {
       headers: { authorization: "Bearer " + token },
     });
     console.log("delete : ", deletedAqar.data);
@@ -33,18 +33,20 @@ export default function User({ token }) {
     }
   };
   const updateH = async (id, i) => {
+    console.log("hi");
     const upd = await axios.put(
-      `http://localhost:5000/user/` + id,
+      `https://aqar-ksa.herokuapp.com/user/` + id,
       { role },
       {
         headers: { authorization: "Bearer " + token },
       }
     );
-    // console.log("id :", id);
-    // console.log(upd.data, "here");
+    console.log("id :", id);
+    console.log(upd.data, "here");
     const cop = [...User];
     cop[i] = upd.data;
     setUser(cop);
+    <h1>تم تعديل</h1>
   };
   return (
     <div>
@@ -56,7 +58,7 @@ export default function User({ token }) {
 
       {User.map((element, i) => {
         return (
-          <>
+          <div  key={element._id}>
             <table className="table">
               <tr className="tr">
                 <th>تحرير</th>
@@ -66,20 +68,28 @@ export default function User({ token }) {
               </tr>
 
               <tr className="tr">
+              
                 <td className="ttt"  onClick={() => {  history.push("/UpdateUserAdmin/" + element._id); }} > <FaUserEdit />  </td>
-                <td>
+              <td>
+                {element.role !=1 ?<>
+                
                   <select onChange={(e) => { setrole(e.target.value); }} >
                     <option value="2">منشأة</option>
                     <option value="3">عضو</option>
                   </select>
-                  <button lassName="but" onClick={() => {  updateH(element._id, i) }} > تعديل  </button>
-                </td>
+                                    <button lassName="but" onClick={() => {  updateH(element._id, i) }} > تعديل  </button></>
 
-                <td className="ttt" onClick={() => {  deleteUser(element._id, i);  }} > <FaUserAltSlash /></td>
+                                    :"........مدير الموقع"
+                                  }
+                </td>
+                {element.role !=1 ?<>
+
+                <td className="ttt" onClick={() => {  deleteUser(element._id, i);  }} > <FaUserAltSlash /></td> </> :"...."
+                                  }
                 <td> {element.name} </td>
               </tr>
             </table>
-          </>
+          </div>
         );
       })}
     </div>

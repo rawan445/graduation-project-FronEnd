@@ -38,4 +38,25 @@
   .liq a:hover:not(.active) {
     background-color: #f0e5cf5d;
   }
-  
+  @media only screen and (max-width: 900px) {
+
+    .ul {
+      width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    /* flex-direction: column; */
+    margin-left: -13px;
+    font-size: 10px;
+
+/*    
+    width: 392px;
+    height: 63px;
+    display: flex;
+    flex-wrap: nowrap; */   
+     /* width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin-left: -13px; */
+    }
+  }

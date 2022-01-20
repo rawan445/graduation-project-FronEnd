@@ -38,6 +38,8 @@ const logout =  ()=>{
             <ul className="ul">
            <li className="li"><Link to="/Company"> منشأت عقارية </Link>  </li>
            <li className="li"> <Link to="/Addcompany"> أضافة منشأة  </Link> </li>
+           <li className="li">  <Link to="/Consultation">استشارات عقارية</Link> </li >
+
            <details className="liq">
   <summary> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" style={{width:"0px"}}/> مرحبا {name}  </summary>
   <nav className="menu">

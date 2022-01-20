@@ -9,21 +9,22 @@ export default function Home() {
 
     return (
         <>
-
-
-            <div className="grid-container">
+<div _ngcontent-uby-c90="" class="forYou">
+<h1 className='h1foo'>نحن هنا من اجلك</h1>
+<h4 className='h4foo'>يسهل موقع منصه السعوديه للعقارات عليك البحث عن المنازل وحفظ مفضلاتك و المعاملات العقارية في العديد من الأسواق مع وضع تدابير أمان جديدة والتواصل معنا أينما كنت</h4>
+   
+</div>
+         <div className="grid-container">
   <div className="grid-item">
-      <img src='https://up4net.com/uploads4/up4net.com164084802579491.png'
-      style={{width:"300px"}}
+      <img className='immgg2' src='https://k.top4top.io/p_2208dlo992.png'
       onClick={() => {history.push("/Login");}}
       />
        {/* <button onClick={() => {history.push("/Login");}} >بوابة المنشآت</button> */}
 </div>
   <div className="grid-item"> 
     
-  <img src='https://up4net.com/uploads4/up4net.com164084802584122.png'
+  <img  className='immgg1' src='https://j.top4top.io/p_2208kew771.png'
            onClick={() => {history.push("/Login");}}
-     style={{width:"300px"}}
       />
         {/* <button onClick={() => {history.push("/Login"); }}>بوابة الأفراد</button> */}
 </div>

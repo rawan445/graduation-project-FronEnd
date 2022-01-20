@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import ProgressBar from '../ProgressBar';
+
+
 //
 export default function Addcompany({token}) {
     const history = useHistory();
@@ -14,14 +16,16 @@ export default function Addcompany({token}) {
     const [location, setlocation] = useState("")
     const [mobileNumber, setmobileNumber] = useState("")
     const [nameAqar, setnameAqar] = useState("")
+    const [email, setemail] = useState("")
+    const [website, setwebsite] = useState("")
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
-    const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+    const types = ['image/png', 'image/jpeg' ,'image/jfif']; //الصيغ االمسموحه لتحميلها 
 
     const addAqars=async ()=>{
         const result = await axios.post(
-          "http://localhost:5000/company",
-          {name,logo,city, description,location, mobileNumber, nameAqar},
+          "https://aqar-ksa.herokuapp.com/company",
+          {name,logo,city, description,location, mobileNumber, nameAqar,email, website},
           {
             headers: { authorization: `Bearer ${token}` },
           });
@@ -55,11 +59,15 @@ export default function Addcompany({token}) {
       <label>: المدينة</label>
       <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
       <label>: معلومات عن المنشأة</label>
-      <input className="inputC"onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/>
+      {/* <input className="inputC"onChange={(e) => {  (setdescription(e.target.value));}} placeholder="description"/> */}
       <label>: موقع المنشأة على قوقل ماب</label>
       <input className="inputC"onChange={(e) => {  (setlocation(e.target.value));}} placeholder="location"/>
       <label>: رقم هاتف المنشأة</label>
       <input className="inputC"onChange={(e) => {  (setmobileNumber(e.target.value));}} placeholder="mobileNumber"/>
+      <label>: بريد الالكتروني المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setemail(e.target.value));}} placeholder="mobileNumber"/>
+      <label>: موقع ويب المنشأة</label>
+      <input className="inputC"onChange={(e) => {  (setwebsite(e.target.value));}} placeholder="mobileNumber"/>
       <label>: عدد العقارات المتوفره في المنشأة</label>
       <input className="inputC"onChange={(e) => {  (setnameAqar(e.target.value));}} placeholder="nameAqar"/>
     

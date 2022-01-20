@@ -8,13 +8,13 @@ export default function Company({ token, role, idU }) {
   const [Company, setCompany] = useState([]);
 
   useEffect(async () => {
-    const res = await axios.get("http://localhost:5000/companys", {
+    const res = await axios.get("https://aqar-ksa.herokuapp.com/companys", {
       headers: { authorization: `Bearer ${token}` },
     });
     setCompany(res.data);
-
-    // console.log(res.data);
   }, [token]);
+
+  
   const Companydetails = (id) => {
     // console.log("hhhhhhhhhhhh");
     history.push("/CompanyDetails/" + id);
@@ -23,7 +23,7 @@ export default function Company({ token, role, idU }) {
     // console.log("id : ",id  ,"token : ",token);
 
     const deletedAqar = await axios.delete(
-      "http://localhost:5000/company/" + id,
+      "https://aqar-ksa.herokuapp.com/company/" + id,
       {
         headers: { authorization: "Bearer " + token },
       }
@@ -46,12 +46,11 @@ export default function Company({ token, role, idU }) {
       <div>
         {Company.map((element, i) => {
           return (
-            <>
               <div key={element._id}>
                 <div className="column">
                   <div className="card1">
                     <img  className="img" onClick={() => { Companydetails(element._id); }}  src={element.logo} alt="..." />
-                    <h3>{element.name}</h3>
+                    <h3 className="h33">{element.name}</h3>
                     {/* شرط لتحديد ظهور الزر البوتن  */}
                     {role == 2 && element.user == idU ? (
                       <>
@@ -61,7 +60,7 @@ export default function Company({ token, role, idU }) {
                   </div>
                 </div>
               </div>
-            </>
+          
           );
         })}
       </div>
