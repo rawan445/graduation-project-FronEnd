@@ -11,7 +11,6 @@ export default function UpdateCompAdmin({token }) {
     const history = useHistory();
 
     const {id} = useParams()
-    // eslint-disable-next-line
     const [a, seta] = useState([])
     const [name, setname] = useState("")
     const [logo, setimg] = useState("")
@@ -39,8 +38,7 @@ export default function UpdateCompAdmin({token }) {
 
       // console.log("id :",id);
       // console.log("Data : ",res.data);
-      // eslint-disable-next-line
-    }, [token]);
+      }, [token]);
     
   const updateH = async ()=>{
     const upd = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/company/`+id,{ name ,logo,city,description,location,mobileNumber, nameAqar},

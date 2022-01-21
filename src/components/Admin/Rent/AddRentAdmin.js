@@ -24,7 +24,6 @@ export default function AddRentAdmin(props) {
 
   
       const addRent=async ()=>{
-         // eslint-disable-next-line
         const result = await axios.post(
           "https://aqar-ksa.herokuapp.com/Rent",
           { name, price, img, location, space,city, mobileNumber,description },

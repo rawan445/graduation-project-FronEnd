@@ -17,10 +17,12 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
           email: email,
           password: password,
         });
+// console.log("ASSS",response.data.payload.userId);
 
 
         if(response.data.payload.role=== 1){
           
+          // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
 
           setRole(response.data.payload.role)
@@ -70,15 +72,16 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
     };
   return (
     <div>  
-      <div className="addC">  
+       <div className="addC">  
           <h2>تسجيل دخول  </h2>
-    <hr/>
-        <label>:  البريد الالكتروني</label>
+          <hr/>
+      <label>:  البريد الالكتروني</label>
         <input className="inputC" onChange={(e) => { (setEmail(e.target.value)); }} type="text" id="email" placeholder="Enter eamil" />
         <label>: الرقم السري </label>
         <input className="inputC"  onChange={(e) => { (setPassword(e.target.value)); }} type="password" id="password" placeholder="Enter passowrd"/>
       <button className="buttt" onClick={(event) => {  checkLogin(event);  }}type="submit" > Submit </button> 
       </div>
+
     </div>
     
   );}
