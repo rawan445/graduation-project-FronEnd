@@ -142,6 +142,8 @@ color: #4B6587;
    
     }
 @media only screen and (max-width: 900px) {
+  .tableDiv{
+  }
   .himg{
     background-image: url(https://k.top4top.io/p_2208ay4go1.png);
   }

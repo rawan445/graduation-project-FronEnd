@@ -93,8 +93,7 @@ export default function AqarDetails({token ,role,idU}) {
   return(
     // eslint-disable-next-line
   <SplideSlide key={ele._id}>
-// eslint-disable-next-line
-    <images src={ele} style={{width:"100%" ,height:"80vh"}}/>
+    <img src={ele} style={{width:"100%" ,height:"80vh"}}/>
   </SplideSlide>
 
       )})}

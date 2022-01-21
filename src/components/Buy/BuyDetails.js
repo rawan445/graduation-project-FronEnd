@@ -96,7 +96,7 @@ export default function AqarDetails({token ,role,idU}) {
         {a.img1.map((ele)=>{
   return(
   <SplideSlide key={ele._id}>
-    <image src={ele} alt="Image 1" style={{width:"100%" ,height:"80vh"}}/>
+    <img src={ele} alt="Image 1" style={{width:"100%" ,height:"80vh"}}/>
   </SplideSlide>
 
       )})}

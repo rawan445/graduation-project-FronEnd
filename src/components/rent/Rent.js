@@ -82,100 +82,32 @@ const deleteAqar = async (id, index)=>{
 
         
       </div>
-    {/* //////////////////////////////////////////////////////// */}
       { serch.length? serch.map((element, i) => {
         return (
-          <div  key={element._id}>
+          <div key={element._id}>
             <div className="wrapper" key={element._id}>
               <div className="card">
                 <table>
-                  <tr>
+                  <tbody>
                     <td>
                       <span className="title-background">
                         عنوان العقار : {element.name}
                       </span>
-                      <p className="title-background">
-                        وصف :{element.description}
-                      </p>
-                      {/* <p>ggggggggg:  {element.user.name}</p> */}
-                      <p className="title-background">
+                      <p className="title-background1">
                         المدينه:{element.city}
-
                       </p>
-                      <p className="title-background">
-                     <CgSpaceBetween/> {element.space}  <MdBedroomChild/> {element.bedRooms}  <MdLiving/> {element.LivingRoom} 
-                     <MdBathroom/> {element.bathRoom}  <MdOutlineMapsHomeWork/> {element.roleA}  <MdRealEstateAgent/> {element.propertyAge}
+                      <p className="title-background2">
+                     <CgSpaceBetween/> {element.space} , <MdBedroomChild/> {element.bedRooms} , <MdLiving/> {element.LivingRoom} ,
+                     <MdBathroom/> {element.bathRoom} , <MdOutlineMapsHomeWork/> {element.roleA} , <MdRealEstateAgent/> {element.propertyAge}
                       </p>
-                 
-                
                       {/* <button className="btn"  > تفاصيل أكثر </button> */}
-                      {role === 3 && element.user ===idU? <>
+                      {role === 3 && element.user ===idU ? <>
                         <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
-                      <button className="btn"  onClick={() => {history.push("/UpdateRent/" + element._id); }}> تحرير </button>
+                      <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + element._id); }}> تحرير </button>
 
                       </>
-                
+                  
                       :""     }
-                      {element.n}
-                    </td>
-
-                    <td>
-                      <div className="myDiv"></div>
-                    </td>
-                    <td style={{ width: "30%" }}>
-                      
-                      <div className="xx">
-                        <img
-                          className="imgAqar"
-                          src={element.img}
-                          alt="..."
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          </div>
-        );
-      }) 
-      
-      : 
-   // {/* //////////////////////////////////////////////////////// */}
-
-      Aqar.map((element, i) => {
-        return (
-          <div  key={element._id}>
-            <div className="wrapper" key={element._id}>
-              <div className="card" >
-                <table>
-                  <tr>
-                    <td>
-                      <span className="title-background">
-                        عنوان العقار : {element.name}
-                      </span>
-                      <p className="title-background">
-                        وصف :{element.description}
-                      </p>
-
-                      <p className="title-background">
-                        المدينه:{element.city}
-                      </p>
-                      <p className="title-background">
-                     <CgSpaceBetween/> {element.space}  <MdBedroomChild/> {element.bedRooms}  <MdLiving/> {element.LivingRoom} 
-                     <MdBathroom/> {element.bathRoom}  <MdOutlineMapsHomeWork/> {element.roleA}  <MdRealEstateAgent/> {element.propertyAge}
-                      </p>
-                 
-                
-                      {/* <p>{element.user.name}</p> */}
-                      {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
-                      {role === 3 && element.user ===idU? <>
-                        <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
-                      <button className="btn"  onClick={() => {history.push("/UpdateRent/" + element._id); }}> تحرير </button>
-
-                      </>
-                
-                      :""     }                  
                     </td>
 
                     <td>
@@ -192,7 +124,63 @@ const deleteAqar = async (id, index)=>{
                         />
                       </div>
                     </td>
-                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        );
+      })     
+      : 
+      Aqar.map((element, i) => {
+        return (
+          <div  key={element._id}>
+            <div className="wrapper" key={element._id}>
+              <div className="card" >
+                <table>
+                  <tbody>
+                    <td>
+                      <span className="title-background">
+                        عنوان العقار : {element.name}
+                      </span>
+                      <p className="title-background1">
+                        المدينه:{element.city}
+                      </p>
+                      <p className="title-background11">
+                     <CgSpaceBetween/> {element.space}  <MdBedroomChild/> {element.bedRooms}  <MdLiving/> {element.LivingRoom} 
+                     <MdBathroom/> {element.bathRoom}  <MdOutlineMapsHomeWork/> {element.roleA}  <MdRealEstateAgent/> {element.propertyAge}
+                      </p>
+                 
+                
+
+                      {/* <p>{element.user.name}</p> */}
+                      {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
+                      {/* <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button> */}
+                      {role === 3 && element.user ===idU ? <>
+                        <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
+                      <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + element._id); }}> تحرير </button>
+
+                      </>
+                  
+                      :""     }
+                      {element.n}
+                    </td>
+
+                    <td>
+                      <div className="myDiv"></div>
+                    </td>
+                    <td style={{ width: "30%" }}>
+                      
+                      <div className="xx">
+                        <img
+                        onClick={() => {  (Aqardetails(element._id));}}
+                          className="imgAqar"
+                          src={element.img}
+                          alt="..."
+                        />
+                      </div>
+                    </td>
+                  </tbody>
                 </table>
               </div>
             </div>
