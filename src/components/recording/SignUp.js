@@ -37,7 +37,7 @@ export default function SignUp() {
           <h2>تسجيل دخول  </h2>
           <hr/>
           <label>: أسم المستخدم</label>
-        <input className="inputC" onChange={(e) => {  changeName(e); }} type="text" id="email" placeholder="Enter eamil" />
+        <input className="inputC" onChange={(e) => {  changeName(e); }} type="text" placeholder="Enter name" />
       <label>:  البريد الالكتروني</label>
         <input className="inputC" onChange={(e) => { changeEmail(e); }} type="text" id="email" placeholder="Enter eamil" />
         <label>: الرقم السري </label>
