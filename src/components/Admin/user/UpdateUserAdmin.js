@@ -12,7 +12,7 @@ export default function UpdateUserAdmin({token}) {
 
 // eslint-disable-next-line
     useEffect(async () => {
-      const res = await axios.get(`h${process.env.REACT_APP_BACKEND_URL}/user/`+id, {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/`+id, {
         headers: { authorization: `Bearer ${token}`  },
         });
         seta(res.data)

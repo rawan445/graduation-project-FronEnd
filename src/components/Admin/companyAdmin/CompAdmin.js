@@ -9,7 +9,7 @@ export default function CompAdmin({ token }) {
   const [BuyA, setBuyA] = useState([]);
  // eslint-disable-next-line
   useEffect(async () => {
-    const res = await axios.get(`h${process.env.REACT_APP_BACKEND_URL}/companys`, {});
+    const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/companys`, {});
     setBuyA(res.data);
     console.log("Data : ", res.data);
   }, []);
