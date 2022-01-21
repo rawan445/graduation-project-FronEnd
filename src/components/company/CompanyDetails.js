@@ -1,14 +1,10 @@
 import React,{useEffect , useState} from "react";
 import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
-
 export default function CompanyDetails({token}) {
-
-    const history = useHistory();
     const {id} = useParams()
     const [a, seta] = useState([])
-
+// eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/company/`+id, {
     headers: { authorization: `Bearer ${token}`  },
@@ -16,7 +12,7 @@ export default function CompanyDetails({token}) {
     // console.log("id :",id);
     seta(res.data);
     console.log("Data : ",res.data);
-    
+    // eslint-disable-next-line
   }, [token]);
     return (
         <div>
@@ -58,7 +54,8 @@ export default function CompanyDetails({token}) {
     <td className="tdA">عدد العقارات </td>
   </tr>
   <tr className="trA">
-    <td className="tdA"> <iframe src={a.location} allowfullscreen="" loading="lazy"></iframe> </td>
+
+    <td className="tdA"> <iframe title="b1" src={a.location} allowfullscreen="" loading="lazy"></iframe> </td>
     <td className="tdA">موقع المنشاه  </td>
   </tr>
 </table>

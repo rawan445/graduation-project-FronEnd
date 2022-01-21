@@ -11,6 +11,7 @@ export default function UpdateCompAdmin({token }) {
     const history = useHistory();
 
     const {id} = useParams()
+    // eslint-disable-next-line
     const [a, seta] = useState([])
     const [name, setname] = useState("")
     const [logo, setimg] = useState("")
@@ -23,7 +24,7 @@ export default function UpdateCompAdmin({token }) {
     const [error, setError] = useState(null);
   
     const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
-
+// eslint-disable-next-line
     useEffect(async () => {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/company/`+id, {
       headers: { authorization: `Bearer ${token}`  },
@@ -38,7 +39,7 @@ export default function UpdateCompAdmin({token }) {
 
       // console.log("id :",id);
       // console.log("Data : ",res.data);
-      
+      // eslint-disable-next-line
     }, [token]);
     
   const updateH = async ()=>{

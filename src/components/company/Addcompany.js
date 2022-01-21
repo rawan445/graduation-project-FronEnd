@@ -12,6 +12,7 @@ export default function Addcompany({token}) {
     const [name, setname] = useState("")
     const [logo, setimg] = useState("")
     const [city, setcity] = useState("")
+    // eslint-disable-next-line
     const [description, setdescription] = useState("")
     const [location, setlocation] = useState("")
     const [mobileNumber, setmobileNumber] = useState("")
@@ -21,8 +22,8 @@ export default function Addcompany({token}) {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
     const types = ['image/png', 'image/jpeg' ,'image/jfif']; //الصيغ االمسموحه لتحميلها 
-
     const addAqars=async ()=>{
+      // eslint-disable-next-line
         const result = await axios.post(
           `${process.env.REACT_APP_BACKEND_URL}/company`,
           {name,logo,city, description,location, mobileNumber, nameAqar,email, website},

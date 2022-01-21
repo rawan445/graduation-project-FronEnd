@@ -20,7 +20,7 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
 // console.log("ASSS",response.data.payload.userId);
 
 
-        if(response.data.payload.role== 1){
+        if(response.data.payload.role=== 1){
           
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
@@ -37,7 +37,7 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
 
           history.push("/Admin");
           
-        }else if(response.data.payload.role== 2){
+        }else if(response.data.payload.role=== 2){
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
           setRole(response.data.payload.role)

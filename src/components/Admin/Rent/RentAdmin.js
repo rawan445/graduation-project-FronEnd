@@ -7,6 +7,7 @@ import axios from "axios";
 export default function RentAdmin({token}) {
     const history = useHistory();
 const [Rent, setRent] = useState([])
+ // eslint-disable-next-line
     useEffect(async () => {
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Rents`, {
         });

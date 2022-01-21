@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 export default function AddAqar(props) {
   const history = useHistory();
   // console.log(props, "rawaaaaaaaan")
+   // eslint-disable-next-line
   const {token ,settoken} = props
   const [name, setname] = useState("")
   const [logo, setimg] = useState("")
@@ -25,6 +26,7 @@ export default function AddAqar(props) {
   const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
 
       const addAqars=async ()=>{
+         // eslint-disable-next-line
         const result = await axios.post(
           `${process.env.REACT_APP_BACKEND_URL}/company`,
           {name ,logo,city,description,location,mobileNumber, nameAqar },

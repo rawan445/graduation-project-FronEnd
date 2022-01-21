@@ -22,6 +22,7 @@ export default function UpdateBuyAdmin({token }) {
     const [error, setError] = useState(null);
   
     const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+     // eslint-disable-next-line
     useEffect(async () => {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Buy/`+id, {
       headers: { authorization: `Bearer ${token}`  },
@@ -36,7 +37,7 @@ export default function UpdateBuyAdmin({token }) {
       setdescription(res.data.description)
       // console.log("id :",id);
       // console.log("Data : ",res.data);
-      
+       // eslint-disable-next-line
     }, [token]);
     
   const updateH = async ()=>{

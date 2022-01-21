@@ -93,7 +93,7 @@ margin: 10px;
   position: relative;
   padding: 10px 10px 0;
   display:flex;
-  justify-content: end;
+  justify-content: flex-end ;
   /* margin-left: 300px; */
 
 }

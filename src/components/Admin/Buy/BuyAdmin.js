@@ -7,11 +7,12 @@ import { GiReturnArrow } from "react-icons/gi";
 import "./BuyAdmin.css";
 
 export default function BuyAdmin(props) {
+   // eslint-disable-next-line
   const { token, settoken } = props;
 
   const [BuyA, setBuyA] = useState([]);
   const history = useHistory();
-
+ // eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Buys`, {});
     setBuyA(res.data);

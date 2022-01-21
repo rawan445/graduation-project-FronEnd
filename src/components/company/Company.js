@@ -6,7 +6,7 @@ import "./com.css";
 export default function Company({ token, role, idU }) {
   const history = useHistory();
   const [Company, setCompany] = useState([]);
-
+// eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/companys`, {
       headers: { authorization: `Bearer ${token}` },
@@ -52,7 +52,7 @@ export default function Company({ token, role, idU }) {
                     <img  className="img" onClick={() => { Companydetails(element._id); }}  src={element.logo} alt="..." />
                     <h3 className="h33">{element.name}</h3>
                     {/* شرط لتحديد ظهور الزر البوتن  */}
-                    {role == 2 && element.user == idU ? (
+                    {role === 2 && element.user === idU ? (
                       <>
                         <button className="btn" onClick={() => { deleteAqar(element._id, i);}}> حذف</button>
                         <button className="btn"onClick={() => { history.push("/UpdateCompany/" + element._id); }}>تحرير </button> </>

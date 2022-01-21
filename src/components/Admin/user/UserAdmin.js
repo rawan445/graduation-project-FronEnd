@@ -10,7 +10,7 @@ export default function User({ token }) {
   const history = useHistory();
   const [User, setUser] = useState([]);
   const [role, setrole] = useState("");
-
+// eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`, {
       headers: { authorization: `Bearer ${token}` },
@@ -71,7 +71,7 @@ export default function User({ token }) {
               
                 <td className="ttt"  onClick={() => {  history.push("/UpdateUserAdmin/" + element._id); }} > <FaUserEdit />  </td>
               <td>
-                {element.role !=1 ?<>
+                {element.role !==1 ?<>
                 
                   <select onChange={(e) => { setrole(e.target.value); }} >
                     <option value="2">منشأة</option>
@@ -82,7 +82,7 @@ export default function User({ token }) {
                                     :"........مدير الموقع"
                                   }
                 </td>
-                {element.role !=1 ?<>
+                {element.role !==1 ?<>
 
                 <td className="ttt" onClick={() => {  deleteUser(element._id, i);  }} > <FaUserAltSlash /></td> </> :"...."
                                   }

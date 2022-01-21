@@ -10,7 +10,7 @@ export default function UpdateUserAdmin({token}) {
     const [name, setname] = useState("")
     const [email, setemail] = useState("")
 
-
+// eslint-disable-next-line
     useEffect(async () => {
       const res = await axios.get(`h${process.env.REACT_APP_BACKEND_URL}/user/`+id, {
         headers: { authorization: `Bearer ${token}`  },
@@ -20,8 +20,9 @@ export default function UpdateUserAdmin({token}) {
       setemail(res.data.email)
   
       console.log("Data : ",res.data);
-      
+     // eslint-disable-next-line 
     }, [token]);
+
     console.log("id :",id);
     console.log("token :",token);
 

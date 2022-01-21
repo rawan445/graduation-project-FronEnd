@@ -14,7 +14,7 @@ function Aqar({ token ,role,idU}) {
   const [Aqar, setAqar] = useState([]);
   const [valueInput, setvalueInput] = useState("");
   const [serch, setSerch] = useState([]);
-//
+// eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Buys`, {
       headers: {authorization: `Bearer ${token}` },
@@ -29,14 +29,14 @@ function Aqar({ token ,role,idU}) {
 
   function setvalue(e) {
     let v = e.target.value;
-    if(v == ""){
+    if(v === ""){
       setSerch([])
     }
     setvalueInput(v);
     setSerch(Aqar)
   }
   function serchA(e) {
-    let newArr = serch.filter((item) => item.city == valueInput);
+    let newArr = serch.filter((item) => item.city === valueInput);
     setSerch(newArr);
     setvalueInput("")
   }
@@ -95,7 +95,7 @@ const deleteAqar = async (id, index)=>{
                      <MdBathroom/> {element.bathRoom} , <MdOutlineMapsHomeWork/> {element.roleA} , <MdRealEstateAgent/> {element.propertyAge}
                       </p>
                       {/* <button className="btn"  > تفاصيل أكثر </button> */}
-                      {role == 3 && element.user ==idU ? <>
+                      {role === 3 && element.user ===idU ? <>
                         <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
                       <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + element._id); }}> تحرير </button>
 
@@ -150,7 +150,7 @@ const deleteAqar = async (id, index)=>{
                       {/* <p>{element.user.name}</p> */}
                       {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
                       {/* <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button> */}
-                      {role == 3 && element.user ==idU ? <>
+                      {role === 3 && element.user ===idU ? <>
                         <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
                       <button className="btn"  onClick={() => {history.push("/UpdateBuy/" + element._id); }}> تحرير </button>
 

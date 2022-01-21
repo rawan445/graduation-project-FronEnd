@@ -5,7 +5,7 @@ import { GiReturnArrow } from 'react-icons/gi';
 
 export default function AddUserAdmin(props) {
     const history = useHistory();
-
+// eslint-disable-next-line
     const {token ,settoken} = props
     const [name, setname] = useState("")
     const [email, setemail] = useState("")

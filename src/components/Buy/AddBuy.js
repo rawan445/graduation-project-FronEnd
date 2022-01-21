@@ -8,6 +8,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 //
 export default function AddAqar(props) {
   const history = useHistory();
+  // eslint-disable-next-line
   const {token ,settoken} = props
   const [name, setname] = useState("")
   const [price, setprice] = useState("")
@@ -29,6 +30,7 @@ export default function AddAqar(props) {
   const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
 
       const addAqars=async ()=>{
+        // eslint-disable-next-line
         const result = await axios.post(
           `${process.env.REACT_APP_BACKEND_URL}/Buy`,
           { name,  price,   img,  location,  space,  city, mobileNumber, description ,bedRooms,LivingRoom ,bathRoom , roleA, propertyAge },

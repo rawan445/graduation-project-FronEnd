@@ -8,6 +8,7 @@ export default function UpdateCompany({token}) {
     const history = useHistory();
 
     const {id} = useParams()
+    // eslint-disable-next-line
     const [a, seta] = useState([])
     const [name, setname] = useState("")
     const [logo, setimg] = useState("")
@@ -22,6 +23,7 @@ export default function UpdateCompany({token}) {
     const [error, setError] = useState(null);
   
     const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+    // eslint-disable-next-line
     useEffect(async () => {
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/company/`+id, {
         headers: { authorization: `Bearer ${token}`  },
@@ -36,7 +38,7 @@ export default function UpdateCompany({token}) {
         setnameAqar(res.data.nameAqar)
         setemail(res.data.email)
         setwebsite(res.data.website)
-        
+      // eslint-disable-next-line  
       }, [token]);
          
   const updateH = async ()=>{

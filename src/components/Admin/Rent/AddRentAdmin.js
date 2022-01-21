@@ -7,6 +7,7 @@ export default function AddRentAdmin(props) {
   const history = useHistory();
 
   console.log(props, "rawaaaaaaaan")
+   // eslint-disable-next-line
   const {token ,settoken} = props
   const [name, setname] = useState("")
   const [price, setprice] = useState("")
@@ -23,6 +24,7 @@ export default function AddRentAdmin(props) {
 
   
       const addRent=async ()=>{
+         // eslint-disable-next-line
         const result = await axios.post(
           "https://aqar-ksa.herokuapp.com/Rent",
           { name, price, img, location, space,city, mobileNumber,description },

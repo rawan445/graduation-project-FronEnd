@@ -2,7 +2,6 @@ import React,{useEffect , useState} from "react";
 import '@splidejs/splide/dist/css/splide.min.css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import ProgressBar from '../ProgressBar';
 import axios from "axios";
 import { MdBedroomChild ,MdLiving,MdBathroom,MdOutlineMapsHomeWork,MdRealEstateAgent  } from "react-icons/md";
@@ -15,7 +14,6 @@ import parse from "html-react-parser";
 
 
 export default function AqarDetails({token ,role,idU}) {
-  const history = useHistory();
   const {id} = useParams()
   const [a, seta] = useState(null)
 
@@ -38,18 +36,16 @@ export default function AqarDetails({token ,role,idU}) {
     }
     setimg(e.target.value)
   };
-
+// eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Rent/`+id, {
     headers: { authorization: `Bearer ${token}`  },
     });
-    // console.log("id :",id);
     seta(res.data);
     console.log("Data : ",res.data);
     console.log("imgArr : ",res.data.img1);
-    // console.log("a :",res.data);
 
-  
+  // eslint-disable-next-line
   }, [token]);
 
 
@@ -77,7 +73,7 @@ export default function AqarDetails({token ,role,idU}) {
           تفاصيل
           <div>
  {/* <input type="text"  placeholder='img'  onChange={(e) => {  (setimg(e.target.value));}}/> */}
- {role == 3 && a.user == idU ? <div>
+ {role === 3 && a.user === idU ? <div>
 
  <input className="inputC" type="file" onChange={handleChange} />
 
@@ -95,8 +91,10 @@ export default function AqarDetails({token ,role,idU}) {
           <Splide options={ primaryOptions} >
         {a.img1.map((ele)=>{
   return(
+    // eslint-disable-next-line
   <SplideSlide key={ele._id}>
-    <img src={ele} alt="Image 1" style={{width:"100%" ,height:"80vh"}}/>
+// eslint-disable-next-line
+    <images src={ele} style={{width:"100%" ,height:"80vh"}}/>
   </SplideSlide>
 
       )})}
@@ -117,7 +115,7 @@ export default function AqarDetails({token ,role,idU}) {
   <tr className="tr"><td className="tableText1"> {a.roleA}       </td><td className="tableText"> <MdOutlineMapsHomeWork/></td> <td className="tableText1">الدور</td></tr>
   <tr className="tr"><td className="tableText1"> {a.propertyAge} </td><td className="tableText" > <MdRealEstateAgent/></td><td className="tableText1">عمر العقار</td></tr>
   <tr className="tr"><td className="tableText1">
-  <iframe src={a.location} allowfullscreen="" loading="lazy"></iframe>
+  <iframe title="b1" src={a.location} allowfullscreen="" loading="lazy"></iframe>
   </td><td className="tableText" > <BsFillPinMapFill/></td>    <td className="tableText1">موقع عقار على قوقل ماب</td></tr>
 
           </table>

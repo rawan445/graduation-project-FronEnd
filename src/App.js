@@ -42,7 +42,7 @@ console.log("bbbbbbb : ",process.env.REACT_APP_BACKEND_URL );
    const [idU, setid] = useState("");
    
 
-  
+   // eslint-disable-next-line
   useEffect(async() => { 
     if (!token) {
       const token = JSON.parse(localStorage.getItem("token"))
@@ -60,6 +60,7 @@ if (!role) {
       const role = JSON.parse(localStorage.getItem("id"))
       setid(role)
 }
+ // eslint-disable-next-line
 }, [token])
 
   return (
@@ -78,7 +79,7 @@ if (!role) {
 
     
 
-      {role == 1 ? <> 
+      {role === 1 ? <> 
         <Route exact path= "/Admin"      render={() => ( <Admin    token={token} setToken={setToken}   setRole={setRole} />  )} />
         <Route exact path= "/UserAdmin"  render={() => ( <UserAdmin token={token} setToken={setToken}   setRole={setRole}/>  )} />
         <Route exact path= "/RentAdmin" render={() => ( <RentAdmin token={token} setToken={setToken}   />  )} />
@@ -96,7 +97,7 @@ if (!role) {
 
         
         </>
-    : role == 2 ? <> 
+    : role === 2 ? <> 
       <Route  exact   path="/Addcompany" render={() => { return <Addcompany token={token} />;}} />
       <Route  exact   path="/Consultation" render={() => { return <Consultation token={token} role={role} />;}} />
 
@@ -104,7 +105,7 @@ if (!role) {
 
       
       
-    </> :  role == 3 ? <> 
+    </> :  role === 3 ? <> 
       <Route  exact   path="/AddBuy" render={() => { return <AddBuy token={token} />;}} />
       <Route  exact   path="/Consultation" render={() => { return <Consultation token={token}  role={role}/>;}} />
       <Route  exact   path="/AddRent" render={() => { return <AddRent token={token} />;}} />

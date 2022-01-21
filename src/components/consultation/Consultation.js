@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import parse from "html-react-parser";
@@ -7,8 +6,6 @@ import parse from "html-react-parser";
 
 ///
 function Consultation({ token ,role,idU}) {
-    const {id} = useParams()
-
 
   // const [arrData, setarrData] = useState([]);
   const [arrCon, setarrCon] = useState(null)
@@ -18,7 +15,7 @@ function Consultation({ token ,role,idU}) {
   const [toggel, settoggel] = useState(false)
   const [toggel1, settoggel1] = useState(false)
   const [toggel2, settoggel2] = useState(false)
-
+// eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/consultations`, {
       headers: {authorization: `Bearer ${token}` },
@@ -88,7 +85,7 @@ const changAdd =()=>{
 </div>
    <div className="divvv">
 
-   {role == 3?<>
+   {role === 3?<>
 <button className="btn"   onClick={() => { changAdd()}}  >اضف استشارتك</button>
 </> :""}
    {/* <input onChange={(e) => {  (setconsultation(e.target.value)) ; }} placeholder="...أكتب الاستشاره" /> */}
@@ -122,7 +119,7 @@ const changAdd =()=>{
  
 </table>
 
-  {role == 2 ?<>
+  {role === 2 ?<>
       <button className="btn11" onClick={() => { changAanswerAdd(element._id,i)}}> اضافه رد </button> 
 </> :""}
      

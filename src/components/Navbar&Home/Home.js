@@ -16,14 +16,14 @@ export default function Home() {
 </div>
          <div className="grid-container">
   <div className="grid-item">
-      <img className='immgg2' src='https://k.top4top.io/p_2208dlo992.png'
+      <images className='immgg2' src='https://k.top4top.io/p_2208dlo992.png'
       onClick={() => {history.push("/Login");}}
       />
        {/* <button onClick={() => {history.push("/Login");}} >بوابة المنشآت</button> */}
 </div>
   <div className="grid-item"> 
     
-  <img  className='immgg1' src='https://j.top4top.io/p_2208kew771.png'
+  <images  className='immgg1' src='https://j.top4top.io/p_2208kew771.png'
            onClick={() => {history.push("/Login");}}
       />
         {/* <button onClick={() => {history.push("/Login"); }}>بوابة الأفراد</button> */}

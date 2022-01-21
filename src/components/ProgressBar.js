@@ -10,6 +10,7 @@ const ProgressBar = ({ file, setFile,setimg  }) => {
       setFile(null);
       setimg(url);
     }
+    // eslint-disable-next-line
   }, [url, setFile]);
 
   return (

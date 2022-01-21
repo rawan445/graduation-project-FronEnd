@@ -7,7 +7,7 @@ import "../Admin.css";
 export default function CompAdmin({ token }) {
   const history = useHistory();
   const [BuyA, setBuyA] = useState([]);
-
+ // eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`h${process.env.REACT_APP_BACKEND_URL}/companys`, {});
     setBuyA(res.data);

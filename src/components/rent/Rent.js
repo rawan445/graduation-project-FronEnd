@@ -13,27 +13,27 @@ function Aqar({ token ,role ,idU}) {
   const [valueInput, setvalueInput] = useState("");
   const [serch, setSerch] = useState([]);
 
-//
+// eslint-disable-next-line
   useEffect(async () => {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Rents`, {
       headers: {authorization: `Bearer ${token}` },
     });
     setAqar(res.data);
-    
+    // eslint-disable-next-line
   }, []);
 
   //serch
 
   function setvalue(e) {
     let v = e.target.value;
-    if(v == ""){
+    if(v === ""){
       setSerch([])
     }
     setvalueInput(v);
     setSerch(Aqar)
   }
   function serchA(e) {
-    let newArr = serch.filter((item) => item.city == valueInput);
+    let newArr = serch.filter((item) => item.city === valueInput);
     setSerch(newArr);
     setvalueInput("")
   }
@@ -109,7 +109,7 @@ const deleteAqar = async (id, index)=>{
                  
                 
                       {/* <button className="btn"  > تفاصيل أكثر </button> */}
-                      {role == 3 && element.user ==idU? <>
+                      {role === 3 && element.user ===idU? <>
                         <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
                       <button className="btn"  onClick={() => {history.push("/UpdateRent/" + element._id); }}> تحرير </button>
 
@@ -169,7 +169,7 @@ const deleteAqar = async (id, index)=>{
                 
                       {/* <p>{element.user.name}</p> */}
                       {/* <button className="btn"  onClick={() => {  (Aqardetails(element._id));}}> تفاصيل أكثر </button> */}
-                      {role == 3 && element.user ==idU? <>
+                      {role === 3 && element.user ===idU? <>
                         <button className="btn"  onClick={() => {  deleteAqar(element._id, i); }}> حذف </button>
                       <button className="btn"  onClick={() => {history.push("/UpdateRent/" + element._id); }}> تحرير </button>
 

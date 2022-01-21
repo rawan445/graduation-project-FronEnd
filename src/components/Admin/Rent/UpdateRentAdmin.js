@@ -8,6 +8,7 @@ export default function UpdateRent({token }) {
     const history = useHistory();
 
     const {id} = useParams()
+     // eslint-disable-next-line
     const [a, seta] = useState([])
     const [name, setname] = useState("")
     const [price, setprice] = useState("")
@@ -21,7 +22,7 @@ export default function UpdateRent({token }) {
   const [error, setError] = useState(null);
 
   const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
-
+ // eslint-disable-next-line
     useEffect(async () => {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/Rent/`+id, {
         headers: { authorization: `Bearer ${token}`  },
@@ -36,7 +37,7 @@ export default function UpdateRent({token }) {
       setdescription(res.data.description)
       // console.log("id :",id);
       // console.log("Data : ",res.data);
-      
+      // eslint-disable-next-line 
     }, [token]);
     
   const updateH = async ()=>{
