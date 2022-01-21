@@ -78,7 +78,7 @@ const logout =  ()=>{
                      <li className="li">  <Link to="/rent">اعلان إيجار عقاري </Link> </li >
           {/* <li className="li">  <Link  className="link" to="/login" onClick={() => {setToken(); }} >  دخول </Link>  </li> */}
           <li className="liq">   <Link className="link" to="/SignUp" onClick={() => {setToken(); }}>سجل معنا </Link>  </li>
-          <li className="liq">   <Link className="link" to="/" onClick={() => {setToken(); }}>دخول </Link>  </li>
+          <li className="liq">   <Link className="link" to="/login" onClick={() => {setToken(); }}>دخول </Link>  </li>
 
         </ul>
       )}
