@@ -27,7 +27,7 @@ export default function AddAqar(props) {
 
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
-  const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
+  const types = ['image/png', 'image/jpeg ','image/webp']; //الصيغ االمسموحه لتحميلها 
 
       const addAqars=async ()=>{
         // eslint-disable-next-line
