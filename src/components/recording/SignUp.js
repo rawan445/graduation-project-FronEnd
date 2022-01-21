@@ -30,48 +30,21 @@ export default function SignUp() {
       password: password,
     });
     if (response.status === 201){
-        history.push("/")
+        history.push("/login")
     }
   };
-  return (
-    <div className="addB">  
-          <h2> تسجيل </h2>
+  return ( <div className="addC">  
+          <h2>تسجيل دخول  </h2>
           <hr/>
-       
-       <form id="form" className="form">
-             <h2>تسجيل </h2>
-            
-                 <label >اسم المستخدم </label>
-                 <input  onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
-                 <label >بريد إلكتروني</label>
-                 <input onChange={(e) => { changeEmail(e); }}  type="email" id="email" placeholder="Enter eamil" />
-                 <label >كلمة المرور</label>
-                 <input onChange={(e) => {    changePassword(e);  }} type="password" id="password" placeholder="Enter passowrd" />
-
-             <button  className="buttt"onClick={(e) => {  addUser();  }} type="submit">سجل</button>
-         </form>
-  
-          {/* <label>: اسم المستخدم</label>
-        <input onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
-        <label>: بريد إلكتروني</label>
-        <input  onChange={(e) => {  changeName(e); }} type="text" id="username" placeholder="Enter username" />
-      <label>: كلمة المرور</label>
-          <input onChange={(e) => {    changePassword(e);  }} type="password" id="password" placeholder="Enter passowrd" />
-    
-      
-      <button className="buttt" onClick={(e) => {  addUser();  }} > Submit </button>  */}
+          <label>: أسم المستخدم</label>
+        <input className="inputC" onChange={(e) => {  changeName(e); }} type="text" id="email" placeholder="Enter eamil" />
+      <label>:  البريد الالكتروني</label>
+        <input className="inputC" onChange={(e) => { changeEmail(e); }} type="text" id="email" placeholder="Enter eamil" />
+        <label>: الرقم السري </label>
+        <input className="inputC"  onChange={(e) => { (changePassword(e.target.value)); }} type="password" id="password" placeholder="Enter passowrd"/>
+      <button className="buttt" onClick={(event) => {  addUser(event);  }}type="submit" > Submit </button> 
       </div>
-
-    // <div className="divS"> 
-
-    //  
-
-
-
-      
-    // </div>
-    
-  );
+        );
 }
 
 

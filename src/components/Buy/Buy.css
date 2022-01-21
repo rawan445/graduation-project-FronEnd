@@ -113,7 +113,7 @@ margin: 10px;
   border: 1px outset #4B6587;
   text-align: center;
   width: 600px;
-  height: 1596px;
+  height: auto;
   
   box-shadow: 10px 6px 17px 0px rgb(115 114 114);
   -webkit-box-shadow: 10px 6px 17px 0px rgb(115 114 114);

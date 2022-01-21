@@ -65,7 +65,7 @@
     border: 1px outset #4B6587;
 text-align: center;
   width: 600px;
-  height: 1196px;
+  height: auto;
   box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
 -webkit-box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
 -moz-box-shadow: 10px 6px 17px 0px rgba(115,114,114,1);
