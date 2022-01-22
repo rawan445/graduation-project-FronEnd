@@ -7,6 +7,8 @@ export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setrole] = useState("");
+
   const history = useHistory();
   const changeName = (e) => {
     setName(e.target.value);
@@ -23,11 +25,13 @@ export default function SignUp() {
         name: name,
         email: email,
         password: password,
+        role
       });
     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signUp`, {
       name: name,
       email: email,
       password: password,
+      role
     });
         history.push("/login")
  
@@ -36,12 +40,18 @@ export default function SignUp() {
           <h2>تسجيل دخول  </h2>
           <hr/>
           <label>: أسم المستخدم</label>
-        <input className="inputC" onChange={(e) => {  changeName(e); }} type="text" placeholder="Enter name" />
+        <input className="inputC" onChange={(e) => {  changeName(e); }} type="text" placeholder="ادخل اسم المستخدم" />
       <label>:  البريد الالكتروني</label>
-        <input className="inputC" onChange={(e) => { changeEmail(e); }} type="text" id="email" placeholder="Enter eamil" />
+        <input className="inputC" onChange={(e) => { changeEmail(e); }} type="text" id="email" placeholder="ادخل البريد الالكتروني" />
         <label>: الرقم السري </label>
-        <input className="inputC"  onChange={(e) => { (changePassword(e)); }} type="password"  placeholder="Enter passowrd"/>
-      <button className="buttt" onClick={(event) => {  addUser(event);  }}type="submit" > Submit </button> 
+        <input className="inputC"  onChange={(e) => { (changePassword(e)); }} type="password"  placeholder="ادخل رقم سري"/>
+        <label>:  فرد - منشاه </label>
+        <select onChange={(e) => { setrole(e.target.value);  }} >
+                    <option >اختار</option>
+                    <option value="2">منشأة</option>
+                    <option value="3">عضو</option>
+                  </select>
+      <button className="buttt" onClick={(event) => {  addUser(event);  }}type="submit" > إرسال </button> 
       </div>
         );
 }
