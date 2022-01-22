@@ -29,9 +29,8 @@ export default function SignUp() {
       email: email,
       password: password,
     });
-    if (response.status === 200){
         history.push("/login")
-    }
+ 
   };
   return ( <div className="addC">  
           <h2>تسجيل دخول  </h2>
@@ -41,7 +40,7 @@ export default function SignUp() {
       <label>:  البريد الالكتروني</label>
         <input className="inputC" onChange={(e) => { changeEmail(e); }} type="text" id="email" placeholder="Enter eamil" />
         <label>: الرقم السري </label>
-        <input className="inputC"  onChange={(e) => { (changePassword(e.target.value)); }} type="password" id="password" placeholder="Enter passowrd"/>
+        <input className="inputC"  onChange={(e) => { (changePassword(e)); }} type="password"  placeholder="Enter passowrd"/>
       <button className="buttt" onClick={(event) => {  addUser(event);  }}type="submit" > Submit </button> 
       </div>
         );
