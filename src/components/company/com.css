@@ -60,8 +60,9 @@
 
 }
 .addC{
+  margin: 39px;
   padding: 15px;
-  margin-left: 471px;
+  margin-left: 482px;
     border: 1px outset #4B6587;
 text-align: center;
   width: 600px;
@@ -162,7 +163,7 @@ text-align: center;
 
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 970px) {
   
   .img{
     width: 200px;

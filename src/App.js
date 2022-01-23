@@ -31,6 +31,8 @@ import CompAdmin from "./components/Admin//companyAdmin/CompAdmin"
 import UpdateCompAdmin from "./components/Admin//companyAdmin/UpdateCompAdmin"
 import AddCompAdminAdmin from "./components/Admin/companyAdmin/AddCompAdminAdmin"
 import UpdateRentAdmin from "./components/Admin//Rent/UpdateRentAdmin"
+import F from "./components/recording/F"
+
 require("dotenv").config();
 
 export default function App() {
@@ -68,6 +70,7 @@ if (!role) {
     
       <Navbar token={token} setToken={setToken}  role={role}  setRole={setRole}  setid={setid}name={name} setname={setname}/>  
       <Route exact path="/" component={Home} />
+      <Route exact path="/Real_Estate_FronEnd" component={Home} />
       <Route exact path="/SignUp" component={SignUp} />
       <Route exact path= "/login" render={() => ( <Login setToken = {setToken}  setRole={setRole}  setname={setname}setid={setid}/>  ) }/>
       <Route  exact   path="/Buy" render={() => { return <Buy token={token} role={role} name={name}  idU={idU}/>;}} />
@@ -111,8 +114,12 @@ if (!role) {
       <Route  exact   path="/AddRent" render={() => { return <AddRent token={token} />;}} />
       <Route  exact   path="/UpdateBuy/:id" render={() => { return <UpdateBuy token={token} />;}} />
       <Route  exact   path="/UpdateRent/:id" render={() => { return <UpdateRent token={token} role={role}/>;}} />    
+      <Route  exact   path="/F" render={() => { return <F token={token} role={role}/>;}} />    
 
-   </> :""
+   </> :<>
+   <Route  exact   path="/F" render={() => { return <F token={token} role={role}/>;}} />    
+
+</>
   
   } 
     </div>

@@ -40,7 +40,7 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
           localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
           setToken(response.data.token)
           history.push("/Company");
-        }else {
+        }else if(response.data.payload.role== 3){
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
           setRole(response.data.payload.role)
@@ -52,8 +52,19 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
           localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
           setToken(response.data.token)
           history.push("/Buy");
-        
+        }else {
+          localStorage.setItem("token",JSON.stringify(response.data.token))
+          setRole(response.data.payload.role)
+          console.log("role : ",response.data.payload.role);
+          localStorage.setItem("role :",JSON.stringify(response.data.payload.role))
+          setname(response.data.payload.userName)
+          localStorage.setItem("name",JSON.stringify(response.data.payload.userName))
+          setid(response.data.payload.userId)
+          localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
+          setToken(response.data.token)
+          history.push("/f");
         }
+        
       } catch (error) {
         console.log("error : ",error.response.data);
       }

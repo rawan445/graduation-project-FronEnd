@@ -45,11 +45,11 @@ export default function SignUp() {
         <input className="inputC" onChange={(e) => { changeEmail(e); }} type="text" id="email" placeholder="ادخل البريد الالكتروني" />
         <label>: الرقم السري </label>
         <input className="inputC"  onChange={(e) => { (changePassword(e)); }} type="password"  placeholder="ادخل رقم سري"/>
-        <label>:  فرد - منشاه </label>
+        <label>:  فرد - منشاه </label> <br/>
         <select onChange={(e) => { setrole(e.target.value);  }} >
                     <option >اختار</option>
+                    <option value="3">فرد</option>
                     <option value="2">منشأة</option>
-                    <option value="3">عضو</option>
                   </select>
       <button className="buttt" onClick={(event) => {  addUser(event);  }}type="submit" > إرسال </button> 
       </div>

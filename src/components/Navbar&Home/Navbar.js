@@ -65,7 +65,14 @@ const logout =  ()=>{
 
   </nav>
 </details>            </ul>
-           </>:""
+           </>:<>
+           <ul className="ul">
+
+           <li className="liq">  <Link  to="/"  onClick={() => {  logout(); }}>  تسجيل خروج </Link> </li>
+           <li className="li"><Link to="/F"> عقار </Link>  </li>
+
+           </ul>
+           </>
           
           } 
 
