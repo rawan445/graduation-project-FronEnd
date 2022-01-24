@@ -31,7 +31,7 @@ export default function SignUp() {
       <label>:  البريد الالكتروني</label>
         <input className="inputC" onChange={(e) => { (setEmail(e.target.value)); }}type="text" id="email" placeholder="ادخل البريد الالكتروني" />
         <label>: الرقم السري </label>
-        <input className="inputC"  oonChange={(e) => { (setPassword(e.target.value)); }} type="password"  placeholder="ادخل رقم سري"/>
+        <input className="inputC"  onChange={(e) => { (setPassword(e.target.value)); }} type="password"  placeholder="ادخل رقم سري"/>
         <label>:  فرد - منشاه </label> <br/>
         <select onChange={(e) => { setrole(e.target.value);  }} >
                     <option >اختار</option>
