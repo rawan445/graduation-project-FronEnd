@@ -64,14 +64,14 @@ export default function AddAqar(props) {
       <label>: المدينة</label>
       <input className="inputC"onChange={(e) => {  (setcity(e.target.value));}} placeholder="city"/>
       <label>: مساحة  العقار</label>
-      <input type="number" className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/>
-      <label>: غرف </label>
+      <input type="number" className="inputC"  onChange={(e) => {  (setspace(e.target.value));}} placeholder="space"/><br/>
+      <label>: غرف </label><br/>
       <input  type="number" className="inputC" onChange={(e) => {  (setLivingRoom(e.target.value));}} placeholder="LivingRoom"/>
       <label>: غرف النوم</label>
       <input  type="number" className="inputC"   onChange={(e) => {  (setbedRooms(e.target.value));}} placeholder="bedRooms"/>
       <label>: دورات المياة</label>
-      <input type="number" className="inputC" onChange={(e) => {  (setbathRoom(e.target.value));}} placeholder="bathRoom"/>
-      <label>:         الدور</label>
+      <input type="number" className="inputC" onChange={(e) => {  (setbathRoom(e.target.value));}} placeholder="bathRoom"/><br/>
+      <label>:         الدور</label><br/>
       <input type="number" className="inputC" onChange={(e) => {  (setroleA(e.target.value));}} placeholder="role"/>
       <label>: عمر العقار</label>
       <input className="inputC" onChange={(e) => {  (setpropertyAge(e.target.value));}} placeholder="propertyAge"/>

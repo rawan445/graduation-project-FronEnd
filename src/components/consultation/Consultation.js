@@ -31,14 +31,10 @@ function Consultation({ token ,role,idU}) {
       {
         headers: { authorization: `Bearer ${token}` },
       });   
-      // setconsultation(result.data.consultation)
       setarrCon(result.data)
 
       console.log("consultation : ",result.data);
-    // const copy=[...arrCon]
-    // copy.consultation = result.data;
-    // setconsultation(copy)
-    //   console.log("consultation : ",copy);
+  
   }
 
   const addanswer=async (id ,i)=>{
@@ -56,6 +52,7 @@ function Consultation({ token ,role,idU}) {
       const copuarr =[...arrCon]
       copuarr[i].answer = result.data.answer;
       setarrCon(copuarr)
+
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +82,7 @@ const changAdd =()=>{
 </div>
    <div className="divvv">
 
-   {role === 3?<>
+   {role === 3 ?<>
 <button className="btn"   onClick={() => { changAdd()}}  >اضف استشارتك</button>
 </> :""}
    {/* <input onChange={(e) => {  (setconsultation(e.target.value)) ; }} placeholder="...أكتب الاستشاره" /> */}
@@ -119,9 +116,9 @@ const changAdd =()=>{
  
 </table>
 
-  {role === 2 ?<>
+
       <button className="btn11" onClick={() => { changAanswerAdd(element._id,i)}}> اضافه رد </button> 
-</> :""}
+
      
 {toggel === true ?<> 
   {element.answer.map((ele)=>{

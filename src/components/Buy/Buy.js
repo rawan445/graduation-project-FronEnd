@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { MdBedroomChild ,MdLiving,MdBathroom,MdOutlineMapsHomeWork,MdRealEstateAgent  } from "react-icons/md";
-
 import { CgSpaceBetween} from "react-icons/cg";
-
 import "./Buy.css";
 
 ///
 function Aqar({ token ,role,idU}) {
-
   const history = useHistory();
   const [Aqar, setAqar] = useState([]);
   const [valueInput, setvalueInput] = useState("");
@@ -46,7 +43,7 @@ function Aqar({ token ,role,idU}) {
     history.push("/AddBuy");
   };
   const Aqardetails = (id) => {
-    console.log("hhhhhhhhhhhh");
+    // console.log("hhhhhhhhhhhh");
     history.push("/BuyDetails/" + id );
   };
 //Aqar delet

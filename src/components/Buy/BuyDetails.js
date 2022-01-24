@@ -26,7 +26,7 @@ export default function AqarDetails({token ,role,idU}) {
   const types = ['image/png', 'image/jpeg']; //الصيغ االمسموحه لتحميلها 
   // console.log("idU :",idU);
   
-  const handleChange = (e) => {
+  const handleChange = (e ) => {
     let selected = e.target.files[0];
     if (selected && types.includes(selected.type)) {
       setFile(selected);
@@ -37,6 +37,8 @@ export default function AqarDetails({token ,role,idU}) {
       setError('Please select an image file (png or jpg)');
     }
     setimg(e.target.value)
+    // setimg(selected.data)
+
   };
 // eslint-disable-next-line
   useEffect(async () => {
@@ -58,11 +60,12 @@ export default function AqarDetails({token ,role,idU}) {
       const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/AddImg/${id}`,{img :img1},{
         headers: { authorization: "Bearer " + token },
       })
-      seta({ ...a, img: result.data.img1 });
+       seta({ ...a, img: result.data.img1 });
       console.log("add img",result.data);
     } catch (error) {
       console.log(error);
     }
+
   };
   const primaryOptions = {
     type: "loop",

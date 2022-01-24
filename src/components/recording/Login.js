@@ -14,58 +14,50 @@ export default function SignUp({setToken  ,setRole,setname ,setid}) {
           email: email,
           password: password,
         });
-       // console.log("ASSS",response.data.token.userId);
-        if(response.data.token.role=== 1){
+       // console.log("ASSS",response.data.payload.userId);
+        if(response.data.payload.role=== 1){
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
-          setRole(response.data.token.role)
-          console.log("role : ",response.data.token.role);
-          localStorage.setItem("role :",JSON.stringify(response.data.token.role))
-          setname(response.data.token.userName)
-          localStorage.setItem("name",JSON.stringify(response.data.token.userName))
-          setid(response.data.token.userId)
-          localStorage.setItem("id",JSON.stringify(response.data.token.userId))
+          setRole(response.data.payload.role)
+          console.log("role : ",response.data.payload.role);
+          localStorage.setItem("role :",JSON.stringify(response.data.payload.role))
+          setname(response.data.payload.userName)
+          localStorage.setItem("name",JSON.stringify(response.data.payload.userName))
+          setid(response.data.payload.userId)
+          localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
           setToken(response.data.token)
           history.push("/Admin");
           
-        }else if(response.data.token.role== 2){
+        }else if(response.data.payload.role== 2){
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
-          setRole(response.data.token.role)
-          console.log("role : ",response.data.token.role);
-          localStorage.setItem("role :",JSON.stringify(response.data.token.role))
-          setname(response.data.token.userName)
-          localStorage.setItem("name",JSON.stringify(response.data.token.userName))
-          setid(response.data.token.userId)
-          localStorage.setItem("id",JSON.stringify(response.data.token.userId))
+          setRole(response.data.payload.role)
+          console.log("role : ",response.data.payload.role);
+          localStorage.setItem("role :",JSON.stringify(response.data.payload.role))
+          setname(response.data.payload.userName)
+          localStorage.setItem("name",JSON.stringify(response.data.payload.userName))
+          setid(response.data.payload.userId)
+          localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
           setToken(response.data.token)
           history.push("/Company");
-        }else if(response.data.token.role== 3){
+        }else if(response.data.payload.role== 3){
           // console.log("token : ",response.data.token);
           localStorage.setItem("token",JSON.stringify(response.data.token))
-          setRole(response.data.token.role)
-          console.log("role : ",response.data.token.role);
-          localStorage.setItem("role :",JSON.stringify(response.data.token.role))
-          setname(response.data.token.userName)
-          localStorage.setItem("name",JSON.stringify(response.data.token.userName))
-          setid(response.data.token.userId)
-          localStorage.setItem("id",JSON.stringify(response.data.token.userId))
+          setRole(response.data.payload.role)
+          console.log("role : ",response.data.payload.role);
+          localStorage.setItem("role :",JSON.stringify(response.data.payload.role))
+          setname(response.data.payload.userName)
+          localStorage.setItem("name",JSON.stringify(response.data.payload.userName))
+          setid(response.data.payload.userId)
+          localStorage.setItem("id",JSON.stringify(response.data.payload.userId))
           setToken(response.data.token)
           history.push("/Buy");
-        }else {
-          localStorage.setItem("token",JSON.stringify(response.data.token))
-          setRole(response.data.token.role)
-          console.log("role : ",response.data.token.role);
-          localStorage.setItem("role :",JSON.stringify(response.data.token.role))
-          setname(response.data.token.userName)
-          localStorage.setItem("name",JSON.stringify(response.data.token.userName))
-          setid(response.data.token.userId)
-          localStorage.setItem("id",JSON.stringify(response.data.token.userId))
-          setToken(response.data.token)
-          history.push("/f");
-        }
         
-      } catch (error) {
+        }else if(response.data.payload.role== null){
+          history.push("/F");
+
+        }
+        } catch (error) {
         console.log("error : ",error.response.data);
       }
     };

@@ -54,11 +54,11 @@ console.log("bbbbbbb : ",process.env.REACT_APP_BACKEND_URL );
       const role = JSON.parse(localStorage.getItem("role :"))
       setRole(role) 
 }
-if (!role) {
+if (!name) {
       const role = JSON.parse(localStorage.getItem("name"))
       setname(role) 
 }
-if (!role) {
+if (!idU) {
       const role = JSON.parse(localStorage.getItem("id"))
       setid(role)
 }
@@ -114,7 +114,6 @@ if (!role) {
       <Route  exact   path="/AddRent" render={() => { return <AddRent token={token} />;}} />
       <Route  exact   path="/UpdateBuy/:id" render={() => { return <UpdateBuy token={token} />;}} />
       <Route  exact   path="/UpdateRent/:id" render={() => { return <UpdateRent token={token} role={role}/>;}} />    
-      <Route  exact   path="/F" render={() => { return <F token={token} role={role}/>;}} />    
 
    </> :<>
    <Route  exact   path="/F" render={() => { return <F token={token} role={role}/>;}} />    
